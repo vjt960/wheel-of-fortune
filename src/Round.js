@@ -8,8 +8,8 @@ class Round {
   }
 
   newTurn() {
-  const turn = new Turn(this, this.game.players[0]);
-  this.currentTurn = turn;
+    const turn = new Turn(this, this.game.players[0]);
+    this.currentTurn = turn;
   }
 
   endRound() {
