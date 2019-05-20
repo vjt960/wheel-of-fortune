@@ -13,7 +13,7 @@ class Round {
   }
 
   endRound() {
-    update this.game.roundCounter++
+    this.game.roundCounter++
     this.game.start();
   }
 }
