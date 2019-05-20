@@ -2,23 +2,23 @@ import chai from 'chai'
 const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
+import domUpdates from '../src/domUpdates.js';
 import Game from '../src/Game.js';
 import Turn from '../src/Turn.js';
 import Player from '../src/Player.js';
+import Wheel from '../src/Wheel.js';
+import Data from '../src/Data.js'
+// chai.spy.on(domUpdates, 'createPlayers', () => true);
 
-describe('Turn', function () {
-  let wheel;
+describe.skip('Turn', function () {
+  let names;
+  let wheel = new Wheel();
   let game;
-  let player1;
-  let player2;
-  let player3;
-  let players;
   beforeEach(function () {
-    player1 = new Player('Steve');
-    player2 = new Player('Vinton');
-    player3 = new Player('Jacqueline');
-    players = [player1, player2, player3];
-    game = new Game(players);
+    names = ['Steve', 'Vinton', 'Jacqueline'];
+    wheel.createWheel();
+    game = new Game();
+    game.createPlayers(names);
     game.assignPuzzleBlock();
     game.start();
     game.currentRound.newTurn();
