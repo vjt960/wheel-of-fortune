@@ -50,7 +50,7 @@ class Turn {
         this.player.roundScore += this.currentScore;
         this.endTurn();
       } else {
-        this.endTurn(next Player);
+        this.endTurn(nextPlayer);
       }
   }
 
