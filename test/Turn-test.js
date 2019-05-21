@@ -44,4 +44,18 @@ describe('Turn', function () {
     turn.buyVowel('A', 100);
     expect(turn.currentScore).to.equal(400);
   });
+
+  it('should be able to hold a value on good spins', function() {
+    expect(turn.currentScore).to.equal(0);
+    while (turn.currentScore < 1) {
+      turn.spinWheel();
+    }
+    expect(turn.currentScore).to.be.gt(0);
+  });
+
+  it('should be able to default a player\'s round score', function() {
+    turn.player.roundScore = 2000;
+    turn.goBankrupt();
+    expect(turn.player.roundScore).to.equal(0);
+  });
 })
