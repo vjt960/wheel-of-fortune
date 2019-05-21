@@ -9,9 +9,11 @@ class Turn {
 
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
+    const index = this.round.game.players.indexOf(this.player);
+    const nextPlayer = this.round.game.players[index + 1] || this.round.game.players[0];
     if (typeof result === 'number') {
       this.updateMoney(result);
-    } else if (result == 'BANKRUPT') {
+    } else if (result === 'BANKRUPT') {
       this.goBankrupt(result);
     } else {
       this.endTurn(nextPlayer);
