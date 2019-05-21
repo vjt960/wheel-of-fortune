@@ -15,7 +15,7 @@ class Turn {
     if (typeof result === 'number') {
       this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
-      this.goBankrupt(result);
+      this.goBankrupt();
     } else {
       this.endTurn(nextPlayer);
     }
@@ -42,8 +42,8 @@ class Turn {
     this.currentScore += value;
   }
 
-  goBankrupt(value) {
-    this.currentScore = 0;
+  goBankrupt() {
+    this.player.roundScore = 0;
     this.endTurn();
   }
 
