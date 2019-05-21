@@ -3,10 +3,9 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import domUpdates from '../src/domUpdates.js';
-import Data from '../src/Data.js'
-import Player from '../src/Player.js';
 import Game from '../src/Game.js';
 import Wheel from '../src/Wheel.js';
+import Round from '../src/Round.js';
 chai.spy.on(domUpdates, 'createPlayers', () => true);
 
 
@@ -42,5 +41,19 @@ describe('Game', function() {
 
   it('Should be able to create players', function () {
     expect(game.players[0].name).to.equal('Steve');
+  });
+
+  it('should return a puzzle based on the round being played', function() {
+    game.start();
+    expect(game.roundCounter).to.equal(0);
+    expect(game.returnPuzzle()).to.equal(game.puzzleBlock[0]);
+    game.currentRound.endRound();
+    game.currentRound.endRound();
+    expect(game.returnPuzzle()).to.equal(game.puzzleBlock[2]);
+  });
+
+  it('should store each new Round as a property', function() {
+    game.start();
+    expect(game.currentRound).to.be.an.instanceOf(Round);
   });
 });
