@@ -10,6 +10,8 @@ class Game {
     this.data = this.wheel.data;
     this.roundCounter = 0;
     this.puzzleBlock;
+    this.players;
+    this.currentRound;
   }
 
   assignPuzzleBlock() {
