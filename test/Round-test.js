@@ -1,5 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
+import Data from '../src/Data';
 import Game from '../src/Game';
 import Turn from '../src/Turn';
 import Wheel from '../src/Wheel.js';
@@ -11,7 +12,7 @@ describe('Round', function() {
   let names;
   let game;
   beforeEach(function() {
-    wheel = new Wheel();
+    wheel = new Wheel(Data);
     wheel.createWheel();
     names = ['Steve', 'Vinton', 'Jacqueline'];
     game = new Game(wheel);

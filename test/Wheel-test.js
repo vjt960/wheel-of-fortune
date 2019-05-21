@@ -2,12 +2,13 @@ import chai from 'chai'
 const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
+import Data from '../src/Data';
 import Wheel from '../src/Wheel.js';
 
 describe('Wheel', function() {
   let wheel;
   beforeEach(function() {
-    wheel = new Wheel();
+    wheel = new Wheel(Data);
     wheel.createWheel();
   });
 

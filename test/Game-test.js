@@ -3,6 +3,7 @@ const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
 import domUpdates from '../src/domUpdates.js';
+import Data from '../src/Data';
 import Game from '../src/Game.js';
 import Wheel from '../src/Wheel.js';
 import Round from '../src/Round.js';
@@ -15,7 +16,7 @@ describe('Game', function() {
   let game;
 
   beforeEach(function() {
-    wheel = new Wheel();
+    wheel = new Wheel(Data);
     wheel.createWheel();
     names = ['Steve', 'Vinton', 'Jacqueline'];
     game = new Game(wheel);

@@ -1,4 +1,3 @@
-import Data from './Data';
 import domUpdates from './domUpdates';
 
 class Puzzle {
