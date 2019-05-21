@@ -35,10 +35,14 @@ export default {
   },
 
   revealCorrectGuess(guess, answer) {
-    $(`.char-${answer.indexOf(guess)}`).text(guess);
+    answer.forEach((letter, index) => {
+      if (letter === guess) {
+        $(`.char-${index}`).text(`${guess}`);
+      }
+    })
   },
 
   addIncorrectGuess(guess) {
-    $('.incorrect-guesses').append(`<div>${guess}</div>`);
+    $('.incorrect-guesses').append(`<div class="letter">${guess}</div>`);
   }
 }

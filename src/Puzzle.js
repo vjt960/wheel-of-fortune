@@ -8,7 +8,7 @@ class Puzzle {
     this.totalNumberofLetters = puzzleData.total_number_of_letters;
     this.firstWordLength = puzzleData.first_word;
     this.description = puzzleData.description;
-    this.correctAnswer = [...puzzleData.correct_answer];
+    this.correctAnswer = [...puzzleData.correct_answer.toUpperCase()];
     this.correctGuesses = [];
     this.incorrectGuesses = [];
   }
