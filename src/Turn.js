@@ -9,8 +9,9 @@ class Turn {
 
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
-    const index = this.round.game.players.indexOf(this.player);
-    const nextPlayer = this.round.game.players[index + 1] || this.round.game.players[0];
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (typeof result === 'number') {
       this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
@@ -27,6 +28,9 @@ class Turn {
   }
 
   solvePuzzle(guess) {
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateSolve(guess) === true) {
       this.round.endRound()
     } else {
@@ -48,6 +52,9 @@ class Turn {
   }
 
   letterGuessCheck(guess) {
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += this.currentScore;
       this.endTurn();
