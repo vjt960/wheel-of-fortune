@@ -24,6 +24,7 @@ describe('Game', function() {
   });
 
   it('should have default properties', function() {
+    expect(game.wheel).to.deep.equal(wheel);
     expect(game.roundCounter).to.equal(0);
     expect(game.players.length).to.eql(3);
     expect(game.wheel.values.length).to.equal(22);
