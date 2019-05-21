@@ -6,7 +6,7 @@ import domUpdates from '../src/domUpdates.js';
 import Game from '../src/Game.js';
 import Wheel from '../src/Wheel.js';
 import Round from '../src/Round.js';
-chai.spy.on(domUpdates, 'createPlayers', () => true);
+chai.spy.on(domUpdates, ['displayPuzzleDescription', 'displayPuzzleBlanks', 'displayNames', 'updatePlayer'], () => true);
 
 
 describe('Game', function() {
@@ -20,7 +20,7 @@ describe('Game', function() {
     names = ['Steve', 'Vinton', 'Jacqueline'];
     game = new Game(wheel);
     game.createPlayers(names);
-    game.assignPuzzleBlock();
+    game.start();
   });
 
   it('should have default properties', function() {
@@ -35,7 +35,6 @@ describe('Game', function() {
   });
 
   it('Should be able to start a game', function () {
-    game.start();
     game.currentRound.newTurn();
     expect(game.currentRound.currentTurn.player.name).to.equal('Steve');
   });
@@ -45,7 +44,6 @@ describe('Game', function() {
   });
 
   it('should return a puzzle based on the round being played', function() {
-    game.start();
     expect(game.roundCounter).to.equal(0);
     expect(game.returnPuzzle()).to.equal(game.puzzleBlock[0]);
     game.currentRound.endRound();
@@ -54,12 +52,10 @@ describe('Game', function() {
   });
 
   it('should store each new Round as a property', function() {
-    game.start();
     expect(game.currentRound).to.be.an.instanceOf(Round);
   });
 
   it.skip('should return the winner with the highest total score', function() {
-    game.start();
     expect(game.roundCounter).to.equal(0);
     game.currentRound.endRound();
     game.currentRound.endRound();
