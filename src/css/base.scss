@@ -1,8 +1,10 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
+$border-color: red;
 
 body {
   background-color: $primary-background;
+  text-align: center;
 }
 
 .dim {
@@ -19,7 +21,7 @@ body {
 
 .player-start-page {
   align-items: center;
-  background: pink;
+  background: $primary-background;
   bottom: 0;
   display: grid;
   grid-template-rows: 1.3fr repeat(4 1fr);
@@ -32,6 +34,89 @@ body {
   top:0;
   width: 900px;
   z-index: 1;
+}
+
+header, aside {
+  display: flex;
+  justify-content: space-around;
+}
+
+main {
+  // display: grid;
+  // grid-template-rows: 1fr 2.5fr 6fr;
+}
+
+.score-box {
+  border: 2px solid $border-color;
+  height: 50px;
+  line-height: 0.5;
+  margin: 8px;
+  min-width: 150px;
+  padding: 10px;
+}
+
+.incorrect-guesses, .buy-vowel {
+  border: 2px solid $border-color;
+  height: 330px;
+  position: absolute;
+  top: 434px;
+  width: 200px;
+}
+
+.incorrect-guesses {
+  left: 20px;
+}
+
+.buy-vowel {
+  right: 20px;
+}
+
+.wheel {
+  border-radius: 50%;
+  border: 2px solid red;
+  height: 400px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 595px;
+  width: 620px;
+}
+
+.puzzle-container, .actions-container {
+  border: 2px solid $border-color;
+  margin: auto;
+  min-height: 200px;
+  padding: 10px;
+  width: 900px;
+}
+
+.puzzle-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.puzzle-char {
+  border: 1px solid $border-color;
+  height: 25px;
+  margin: 5px;
+  padding-top: 5px;
+  width: 25px;
+}
+
+.space {
+  height: 25px;
+  width: 25px;
+}
+
+.actions-container {
+  background-color: $primary-background;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 789px;
+  z-index: 2;
 }
 
 .hidden {
