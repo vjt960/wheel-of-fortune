@@ -9,6 +9,8 @@ class Game {
     this.wheel = wheel;
     this.roundCounter = 0;
     this.puzzleBlock;
+    this.players;
+    this.currentRound;
   }
 
   assignPuzzleBlock() {

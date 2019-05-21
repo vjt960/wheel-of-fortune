@@ -1,4 +1,5 @@
 import Data from './Data';
+import domUpdates from './domUpdates';
 
 class Puzzle {
   constructor(puzzleData) {
@@ -7,7 +8,7 @@ class Puzzle {
     this.totalNumberofLetters = puzzleData.total_number_of_letters;
     this.firstWordLength = puzzleData.first_word;
     this.description = puzzleData.description;
-    this.correctAnswer = [...puzzleData.correct_answer];
+    this.correctAnswer = [...puzzleData.correct_answer.toUpperCase()];
     this.correctGuesses = [];
     this.incorrectGuesses = [];
   }
@@ -15,9 +16,11 @@ class Puzzle {
   evaluateLetter(guess) {
     if (this.correctAnswer.includes(guess)) {
       this.correctGuesses.push(guess);
+      domUpdates.revealCorrectGuess(guess, this.correctAnswer);
       return true;
     } else {
       this.incorrectGuesses.push(guess);
+      domUpdates.addIncorrectGuess(guess);
       return false;
     }
   }
