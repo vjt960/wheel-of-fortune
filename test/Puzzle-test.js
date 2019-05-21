@@ -5,16 +5,6 @@ chai.use(spies);
 import Puzzle from '../src/Puzzle.js';
 import Data from '../src/Data';
 
-
-// {
-//   category: 'Around The House',
-//   number_of_words: 1,
-//   total_number_of_letters: 8,
-//   first_word: 8,
-//   description: 'Location or object(s) found within a typical house.',
-//   correct_answer: 'Armchair',
-// }
-
 describe('Puzzle', function() {
   let puzzle;
   beforeEach(function() {
