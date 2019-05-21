@@ -58,4 +58,13 @@ describe('Turn', function () {
     turn.goBankrupt();
     expect(turn.player.roundScore).to.equal(0);
   });
+
+  it('should be able to evaluate a player\'s guess', function() {
+    turn.currentScore = 1000;
+    turn.player.roundScore = 500;
+    expect(turn.player.name).to.equal('Steve');
+    turn.letterGuessCheck('0');
+    expect(turn.player.roundScore).to.equal(500);
+    expect(turn.round.currentTurn.player.name).to.equal('Vinton');
+  });
 })

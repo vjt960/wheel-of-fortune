@@ -8,6 +8,7 @@ class Game {
   constructor(wheel) {
     this.wheel = wheel;
     this.roundCounter = 0;
+    this.puzzleBlock;
   }
 
   assignPuzzleBlock() {
@@ -22,15 +23,15 @@ class Game {
 
   returnPuzzle() {
     this.assignPuzzleBlock();
-    return this.puzzleBlock[2]
-    // return this.puzzleBlock.find((puzz, index, array) => array.indexOf(puzz) === this.roundCounter);
+    return this.puzzleBlock.find((puzz, index, array) => array.indexOf(puzz) === this.roundCounter);
   }
 
   start() {
     const round = new Round(this, this.returnPuzzle());
+    round.newTurn();
     this.assignCurrentRound(round);
-    domUpdates.displayPuzzleDescription(round.puzzle.description);
-    domUpdates.displayPuzzleBlanks(Object.values(round.puzzle)[5])
+    domUpdates.displayPuzzleDescription(this.currentRound.puzzle.description);
+    domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
   }
 
   createPlayers(names) {
@@ -39,7 +40,7 @@ class Game {
       return player;
     });
     this.players = players;
-    // domUpdates.displayNames(this.players);
+    domUpdates.displayNames(this.players);
   }
 
   assignCurrentRound(round) {

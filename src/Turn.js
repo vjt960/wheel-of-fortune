@@ -48,7 +48,8 @@ class Turn {
   }
 
   endTurn(player = this.player) {
-    const newTurn = new Turn(this.currentRound, player)
+    const newTurn = new Turn(this.round, player);
+    this.round.currentTurn = newTurn;
   }
 
   letterGuessCheck(guess) {
