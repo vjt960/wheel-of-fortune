@@ -38,4 +38,10 @@ describe('Turn', function () {
     let result = turn.round.game.wheel.values;
     expect(result).to.include(turn.spinWheel());
   });
+
+  it('should be able to buy a vowel', function() {
+    turn.currentScore = 500;
+    turn.buyVowel('A', 100);
+    expect(turn.currentScore).to.equal(400);
+  });
 })
