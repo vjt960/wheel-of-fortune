@@ -1,12 +1,22 @@
-import Data from './Data';
+import fetch from 'cross-fetch';
+
+let realData;
+fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data")
+.then(function(response) {
+  return response.json();
+})
+.then(function(dataset) {
+  realData = dataset.data;
+});
 
 class Wheel {
-  constructor() {
+  constructor(dataset = realData) {
+    this.data = dataset;
     this.values;
   }
 
   createWheel() {
-    const randomWheel = this.shuffleWheel(Data.wheel);
+    const randomWheel = this.shuffleWheel(this.data.wheel);
     this.values = randomWheel;
   }
  
@@ -15,7 +25,7 @@ class Wheel {
   }
 
   returnResult() {
-    const randomIndex = Math.floor(Math.random() * this.values.length + 1);
+    const randomIndex = Math.floor(Math.random() * this.values.length);
     return this.values[randomIndex];
   }
 }

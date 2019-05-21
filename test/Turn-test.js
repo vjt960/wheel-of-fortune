@@ -13,7 +13,7 @@ import Data from '../src/Data.js'
 
 describe('Turn', function () {
   let names;
-  let wheel = new Wheel();
+  let wheel = new Wheel(Data);
   let game;
   let turn;
 
