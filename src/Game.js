@@ -29,7 +29,6 @@ class Game {
   start() {
     const round = new Round(this, this.returnPuzzle());
     this.assignCurrentRound(round);
-    console.log(Object.values(round.puzzle));
     domUpdates.displayPuzzleDescription(round.puzzle.description);
     domUpdates.displayPuzzleBlanks(Object.values(round.puzzle)[5])
   }
