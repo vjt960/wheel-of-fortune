@@ -56,4 +56,17 @@ describe('Game', function() {
     game.start();
     expect(game.currentRound).to.be.an.instanceOf(Round);
   });
+
+  it.skip('should return the winner with the highest total score', function() {
+    game.start();
+    expect(game.roundCounter).to.equal(0);
+    game.currentRound.endRound();
+    game.currentRound.endRound();
+    game.currentRound.endRound();
+    expect(game.roundCounter).to.equal(3);
+    game.players[0].totalScore = 4000;
+    game.currentRound.endRound();
+    expect(game.roundCounter).to.equal(4);
+    expect(game.findWinner()).to.equal(game.players[0]);
+  })
 });
