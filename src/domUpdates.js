@@ -11,7 +11,7 @@ export default {
     });
   },
 
-  updatePlayer(player) {
+  updateCurrentPlayer(player) {
     $('.current-player').text(player.name);
   },
 
@@ -20,14 +20,25 @@ export default {
 
   },
 
-  displayPuzzleBlanks(puzzle) {
-    console.log(puzzle)
-    puzzle.map(character => {
+  displayPuzzleBlanks(puzzle, guess) {
+    puzzle.map((character, index) => {
       if (/^[A-Za-z]+$/.test(character)) {
-        $('.puzzle-container').append(`<div class="puzzle-char"></div>`)
+        $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`)
       } else {
-        $('.puzzle-container').append('<div class="space"></div>')
+        $('.puzzle-container').append(`<div class="space char-${index}"></div>`)
       }
     })
+  },
+
+  updateRound(round) {
+    $('.round').text(round);
+  },
+
+  revealCorrectGuess(guess, answer) {
+    $(`.char-${answer.indexOf(guess)}`).text(guess);
+  },
+
+  addIncorrectGuess(guess) {
+    $('.incorrect-guesses').append(`<div>${guess}</div>`);
   }
 }

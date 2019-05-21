@@ -4,6 +4,7 @@ $border-color: red;
 
 body {
   background-color: $primary-background;
+  font-family: Roboto;
   text-align: center;
 }
 
@@ -41,6 +42,10 @@ header, aside {
   justify-content: space-around;
 }
 
+article h2 {
+  top-margin: 15px 0px 0px;;
+}
+
 main {
   // display: grid;
   // grid-template-rows: 1fr 2.5fr 6fr;
@@ -52,35 +57,7 @@ main {
   line-height: 0.5;
   margin: 8px;
   min-width: 150px;
-  padding: 10px;
-}
-
-.incorrect-guesses, .buy-vowel {
-  border: 2px solid $border-color;
-  height: 330px;
-  position: absolute;
-  top: 434px;
-  width: 200px;
-}
-
-.incorrect-guesses {
-  left: 20px;
-}
-
-.buy-vowel {
-  right: 20px;
-}
-
-.wheel {
-  border-radius: 50%;
-  border: 2px solid red;
-  height: 400px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 595px;
-  width: 620px;
+  padding: 5px 10px 10px;
 }
 
 .puzzle-container, .actions-container {
@@ -100,7 +77,7 @@ main {
 .puzzle-char {
   border: 1px solid $border-color;
   height: 25px;
-  margin: 5px;
+  margin: 84px 5px;
   padding-top: 5px;
   width: 25px;
 }
@@ -110,12 +87,67 @@ main {
   width: 25px;
 }
 
-.actions-container {
-  background-color: $primary-background;
+.incorrect-guesses, .buy-guess {
+  border: 2px solid $border-color;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  height: 275px;
+  padding: 20px 20px 0;
+  position: absolute;
+  top: 484px;
+  width: 200px;
+}
+
+.incorrect-guesses {
+  left: 20px;
+}
+
+.buy-guess {
+  right: 20px;
+}
+
+.letter {
+  height: 25px;
+  width: 25px;
+}
+
+.letter:hover {
+  color: $border-color;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 0; 
+  height: 0; 
+  border-left: 42px solid transparent;
+  border-right: 42px solid transparent;
+  border-top: 60px solid $border-color;
+  top: 625px;
+}
+
+.wheel {
+  border-radius: 50%;
+  border: 2px solid red;
+  height: 400px;
+  top: 662px;
+  width: 620px;
+}
+
+.spin-val {
+  margin: 33px;
+}
+
+.arrow, .wheel, .actions-container {
   left: 0;
+  margin: auto;
   position: absolute;
   right: 0;
-  top: 789px;
+}
+
+.actions-container {
+  background-color: $primary-background;
+  top: 844px;
   z-index: 2;
 }
 

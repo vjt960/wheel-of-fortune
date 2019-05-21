@@ -14,3 +14,8 @@ $('.start-button').click(function() {
   game.createPlayers(names);
   game.start();
 });
+
+$('.letter').click(function(e) {
+  $('.letter-guess').text($(e.target).text());
+  game.currentRound.puzzle.evaluateLetter($(e.target).text())
+})

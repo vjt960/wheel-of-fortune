@@ -1,4 +1,5 @@
 import Data from './Data';
+import domUpdates from './domUpdates';
 
 class Puzzle {
   constructor(puzzleData) {
@@ -15,8 +16,12 @@ class Puzzle {
   evaluateLetter(guess) {
     if (this.correctAnswer.includes(guess)) {
       this.correctGuesses.push(guess);
+      domUpdates.revealCorrectGuess(guess, this.correctAnswer);
+      return true;
     } else {
       this.incorrectGuesses.push(guess);
+      domUpdates.addIncorrectGuess(guess);
+      return false;
     }
   }
 

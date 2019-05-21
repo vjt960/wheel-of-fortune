@@ -2,6 +2,7 @@
 <html lang="en-US">
   <head>
     <title>Gametime Starter Kit</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="dim"></div>
@@ -53,13 +54,44 @@
       <section class="puzzle-container"></section>
       <p class="puzzle-description"></p>
       <section class="incorrect-guesses"></section>
-      <section class="buy-vowel"></section>
-      <section class="wheel"></section>
+      <section class="buy-guess">
+        <div class="letter vowel">A</div>
+        <div class="letter consonant">B</div>
+        <div class="letter consonant">C</div>
+        <div class="letter consonant">D</div>
+        <div class="letter vowel">E</div>
+        <div class="letter consonant">F</div>
+        <div class="letter consonant">G</div>
+        <div class="letter consonant">H</div>
+        <div class="letter vowel">I</div>
+        <div class="letter consonant">J</div>
+        <div class="letter consonant">K</div>
+        <div class="letter consonant">L</div>
+        <div class="letter consonant">M</div>
+        <div class="letter consonant">N</div>
+        <div class="letter vowel">O</div>
+        <div class="letter consonant">P</div>
+        <div class="letter consonant">Q</div>
+        <div class="letter consonant">R</div>
+        <div class="letter consonant">S</div>
+        <div class="letter consonant">T</div>
+        <div class="letter vowel">U</div>
+        <div class="letter consonant">V</div>
+        <div class="letter consonant">W</div>
+        <div class="letter consonant">X</div>
+        <div class="letter consonant">Y</div>
+        <div class="letter consonant">Z</div>
+      </section>
+      <div class="arrow"></div>
+      <div class="wheel">
+        <p class="spin-val">BANKRUPT</p>
+      </div>
       <section class="actions-container">
-        <h2><span class="current-player">Player</span>'s Turn</h2>
+        <h2>Round <span class="round">1</span></h2>
+        <h3><span class="current-player">Player</span>'s Turn</h3>
         <button class="spin-btn action">Spin</button>
         <button class="solve-btn action">Solve</button>
-        <button class="guess-btn action">Guess Letter</button>
+        <button class="guess-btn action">Guess <span class="letter-guess">Letter</span></button>
         <button class="buy-btn action">Buy Vowel</button>
       </section>
     </main>
