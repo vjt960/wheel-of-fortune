@@ -1,6 +1,9 @@
 import Data from './Data';
 
 class Wheel {
+  constructor() {
+    this.values;
+  }
 
   createWheel() {
     const randomWheel = this.shuffleWheel(Data.wheel);
@@ -13,8 +16,7 @@ class Wheel {
 
   returnResult() {
     const randomIndex = Math.floor(Math.random() * this.values.length + 1);
-    console.log(randomIndex)
-    return this.values.find(value => this.values.indexOf(value) === randomIndex);
+    return this.values[randomIndex];
   }
 }
 
