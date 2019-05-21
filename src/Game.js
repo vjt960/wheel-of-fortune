@@ -21,12 +21,17 @@ class Game {
   }
 
   returnPuzzle() {
-    return this.puzzleBlock.find((puzz, index, array) => array.indexOf(puzz) === this.roundCounter);
+    this.assignPuzzleBlock();
+    return this.puzzleBlock[2]
+    // return this.puzzleBlock.find((puzz, index, array) => array.indexOf(puzz) === this.roundCounter);
   }
 
   start() {
-    const round = new Round(this, this.returnPuzzle())
+    const round = new Round(this, this.returnPuzzle());
     this.assignCurrentRound(round);
+    console.log(Object.values(round.puzzle));
+    domUpdates.displayPuzzleDescription(round.puzzle.description);
+    domUpdates.displayPuzzleBlanks(Object.values(round.puzzle)[5])
   }
 
   createPlayers(names) {

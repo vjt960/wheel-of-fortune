@@ -16,17 +16,14 @@ describe('Game', function() {
   let players;
   beforeEach(function() {
     wheel = new Wheel();
-    wheel.createWheel();
-    player1 = new Player('Steve');
-    player2 = new Player('Vinton');
-    player3 = new Player('Jacqueline');
-    players = [player1, player2, player3];
-    game = new Game(players, wheel);
+    wheel = wheel.createWheel();
+    players = ['Steve', 'Vinton', 'Jacqueline'];
+    game = new Game(wheel);
   });
 
   it('should have default properties', function() {
+    expect(game.wheel).to.deep.equal(wheel);
     expect(game.roundCounter).to.equal(0);
-    expect(game.players.length).to.eql(3);
   });
 
   it('Should be able to create a puzzle block', function() {
