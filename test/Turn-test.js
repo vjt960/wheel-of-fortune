@@ -31,4 +31,4 @@ describe.skip('Turn', function () {
   it('Should be able to spin the wheel', function() {
     expect(game.currentRound.currentTurn.spinWheel()).to.eql();
   });
-})
+});
