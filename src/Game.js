@@ -30,10 +30,10 @@ class Game {
 
   start() {
     const round = new Round(this, this.returnPuzzle());
-    this.assignCurrentRound(round);
     round.newTurn();
-    domUpdates.displayPuzzleDescription(round.puzzle.description);
-    domUpdates.displayPuzzleBlanks(Object.values(round.puzzle)[5])
+    this.assignCurrentRound(round);
+    domUpdates.displayPuzzleDescription(this.currentRound.puzzle.description);
+    domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
   }
 
   createPlayers(names) {

@@ -26,7 +26,7 @@ class Puzzle {
   }
 
   evaluateSolve(guess) {
-    return this.correctAnswer.join('') == guess;
+    return this.correctAnswer.join('').toLowerCase() == guess;
   }
 }
 

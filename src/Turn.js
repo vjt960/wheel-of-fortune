@@ -9,10 +9,13 @@ class Turn {
 
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (typeof result === 'number') {
       this.updateMoney(result);
-    } else if (result == 'BANKRUPT') {
-      this.goBankrupt(result);
+    } else if (result === 'BANKRUPT') {
+      this.goBankrupt();
     } else {
       this.endTurn(nextPlayer);
     }
@@ -25,6 +28,9 @@ class Turn {
   }
 
   solvePuzzle(guess) {
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateSolve(guess) === true) {
       this.round.endRound()
     } else {
@@ -36,16 +42,20 @@ class Turn {
     this.currentScore += value;
   }
 
-  goBankrupt(value) {
-    this.currentScore = 0;
+  goBankrupt() {
+    this.player.roundScore = 0;
     this.endTurn();
   }
 
   endTurn(player = this.player) {
-    const newTurn = new Turn(this.currentRound, player)
+    const newTurn = new Turn(this.round, player);
+    this.round.currentTurn = newTurn;
   }
 
   letterGuessCheck(guess) {
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += this.currentScore;
       this.endTurn();
