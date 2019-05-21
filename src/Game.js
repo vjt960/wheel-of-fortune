@@ -3,7 +3,7 @@ import Player from './Player';
 import domUpdates from './domUpdates';
 import Round from './Round'
 import Puzzle from './Puzzle'
-
+ 
 class Game {
   constructor(wheel) {
     this.wheel = wheel;
@@ -12,7 +12,7 @@ class Game {
 
   assignPuzzleBlock() {
     const newPuzzleBlock = Object.keys(Data.puzzles).reduce((puzzBlock, puzzType) => {
-      const randomIndex = Math.floor(Math.random() * 25);
+      const randomIndex = Math.floor(Math.random() * 24);
       const instantiatedPuzzle = new Puzzle(Data.puzzles[puzzType].puzzle_bank.find(puzz => Data.puzzles[puzzType].puzzle_bank.indexOf(puzz) === randomIndex));
       puzzBlock.push(instantiatedPuzzle);
       return puzzBlock;
@@ -40,7 +40,7 @@ class Game {
       return player;
     });
     this.players = players;
-    domUpdates.displayNames(this.players);
+    // domUpdates.displayNames(this.players);
   }
 
   assignCurrentRound(round) {
