@@ -67,4 +67,4 @@ describe('Turn', function () {
     expect(turn.player.roundScore).to.equal(500);
     expect(turn.round.currentTurn.player.name).to.equal('Vinton');
   });
-})
+});
