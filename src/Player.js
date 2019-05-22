@@ -11,9 +11,9 @@ class Player {
 
   // }
 
-  newGame() {
-    // new Game(same Players);
-  }
+  // newGame() {
+  //   new Game(same Players);
+  // }
 }
 
 export default Player;

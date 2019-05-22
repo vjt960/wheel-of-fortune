@@ -16,7 +16,8 @@ class Round {
 
   endRound() {
     this.game.roundCounter++;
-    domUpdates.updateRound(this.game.roundCounter);
+    domUpdates.updateRound(this.game.roundCounter + 1);
+    domUpdates.clearCorrectLetters();
     this.game.start();
   }
 }
