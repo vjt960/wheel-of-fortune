@@ -1,9 +1,12 @@
+import domUpdates from "./domUpdates";
+
 // import Data from './Data';
 
 class Turn {
   constructor(round, player) {
     this.round = round;
     this.player = player;
+    this.spinValue;
     this.currentScore = 0;
   }
 
@@ -12,6 +15,7 @@ class Turn {
     const thisGame = this.round.game;
     const index = thisGame.players.indexOf(this.player);
     const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
+    this.spinValue = result;
     if (typeof result === 'number') {
       this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
@@ -19,7 +23,6 @@ class Turn {
     } else {
       this.endTurn(nextPlayer);
     }
-    return result;
   }
 
   buyVowel(vowel, cost) {
@@ -32,7 +35,10 @@ class Turn {
     const index = thisGame.players.indexOf(this.player);
     const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateSolve(guess) === true) {
-      this.round.endRound()
+      this.player.totalScore += this.player.roundScore;
+      this.player.roundScore = 0;
+      domUpdates.updateTotalScore(this.round.game, this.player);
+      this.round.endRound();
     } else {
       this.endTurn(nextPlayer)
     }
