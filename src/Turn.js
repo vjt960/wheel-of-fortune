@@ -1,4 +1,5 @@
-import domUpdates from "./domUpdates";
+
+import domUpdates from './domUpdates';
 
 class Turn {
   constructor(round, player) {
@@ -6,6 +7,7 @@ class Turn {
     this.player = player;
     this.spinValue;
     this.currentScore = 0;
+    this.spinResult;
   }
 
   spinWheel() {
@@ -19,7 +21,7 @@ class Turn {
     } else if (result === 'BANKRUPT') {
       this.goBankrupt();
     } else {
-      this.endTurn(nextPlayer);
+      this.endTurn(this.round.game.players[this.round.game.currentPlayer]);
     }
   }
 
@@ -52,8 +54,10 @@ class Turn {
   }
 
   endTurn(player = this.player) {
+    this.round.game.changePlayer();
     const newTurn = new Turn(this.round, player);
     this.round.currentTurn = newTurn;
+    domUpdates.updateCurrentPlayer(this.round.game.players, this.round.game.currentPlayer)
   }
 
   letterGuessCheck(guess) {

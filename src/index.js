@@ -24,6 +24,18 @@ $('.letter').click(function(e) {
   domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player);
   domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
   domUpdates.clearSpinVal();
+//   $(e.target).addClass('used');
+//   if ($(e.target).hasClass('letter')) {
+//     $('.letter-guess').text($(e.target).text());
+//     game.currentRound.puzzle.evaluateLetter($(e.target).text());
+//     $(e.target).removeClass('letter');
+});
+
+$('.sad-btn').click(function() {
+  game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
+  $('.error').text('')
+  $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').removeClass('hidden');
+  $('.sad-btn').addClass('hidden')
 });
 
 $('.spin-btn').click(function() {
@@ -43,4 +55,4 @@ $('.actions-container').click(function(e) {
     domUpdates.clearForm('#solve-input');
     domUpdates.toggleSolveForm();
   };
-})
+});

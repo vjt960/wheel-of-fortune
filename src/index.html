@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <title>Gametime Starter Kit</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="dim"></div>
@@ -52,6 +52,7 @@
         </article>
       </aside>
       <section class="puzzle-container"></section>
+      <p>Category: <span class="puzzle-category"></span></p>
       <p class="puzzle-description"></p>
       <section class="incorrect-guesses"></section>
       <section class="buy-guess">
@@ -84,14 +85,14 @@
       </section>
       <div class="arrow"></div>
       <div class="wheel">
-        <p class="spin-val" id="spin-val">BANKRUPT</p>
+        <p class="spin-val" id="spin-val"></p>
       </div>
       <section class="actions-container">
         <h2>Round <span class="round">1</span></h2>
         <h3><span class="current-player">Player</span>'s Turn</h3>
         <button class="spin-btn action">Spin</button>
         <button class="solve-btn action">Solve</button>
-        <button class="guess-btn action">Guess <span class="letter-guess">Letter</span></button>
+        <button class="guess-btn action hidden">Guess <span class="letter-guess">Letter</span></button>
         <button class="buy-btn action">Buy Vowel</button>
         <form hidden id="solve-form">
           <input placeholder="Type your guess here" type="text" id="solve-input"></input>
