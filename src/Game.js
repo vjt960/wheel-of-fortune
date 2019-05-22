@@ -1,4 +1,3 @@
-// import this.data from './this.data';
 import Player from './Player';
 import domUpdates from './domUpdates';
 import Round from './Round'
@@ -33,8 +32,7 @@ class Game {
     const round = new Round(this, this.returnPuzzle());
     round.newTurn();
     this.assignCurrentRound(round);
-    console.log(this.currentRound.puzzle.correctAnswer);
-    domUpdates.displayPuzzleDescription(this.currentRound.puzzle.description);
+    domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
   }
 
