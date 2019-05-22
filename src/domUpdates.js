@@ -15,9 +15,9 @@ export default {
     $('.current-player').text(player.name);
   },
 
-  displayPuzzleDescription(description) {
-    $('.puzzle-description').text(description);
-
+  displayPuzzleInformation(puzzle) {
+    $('.puzzle-description').text(puzzle.description);
+    $('.puzzle-category').text(puzzle.category)
   },
 
   displayPuzzleBlanks(puzzle, guess) {
@@ -43,6 +43,6 @@ export default {
   },
 
   addIncorrectGuess(guess) {
-    $('.incorrect-guesses').append(`<div class="letter">${guess}</div>`);
+    $('.incorrect-guesses').append(`<div class="letter used">${guess}</div>`);
   }
 }

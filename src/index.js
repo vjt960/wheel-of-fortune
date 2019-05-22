@@ -19,6 +19,10 @@ $('.start-button').click(function() {
 });
 
 $('.letter').click(function(e) {
-  $('.letter-guess').text($(e.target).text());
-  game.currentRound.puzzle.evaluateLetter($(e.target).text())
+  $(e.target).addClass('used');
+  if ($(e.target).hasClass('letter')) {
+    $('.letter-guess').text($(e.target).text());
+    game.currentRound.puzzle.evaluateLetter($(e.target).text());
+    $(e.target).removeClass('letter');
+  }
 })
