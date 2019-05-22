@@ -58,7 +58,10 @@ class Turn {
     const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += this.currentScore;
-      this.endTurn();
+      guess = guess.toUpperCase();
+      this.round.solution = this.round.solution.filter(letter => letter !== '');
+      this.round.solution = this.round.solution.filter(letter => letter !== guess);
+      this.round.solution.length < 1 ? this.round.endRound : this.endTurn();
     } else {
       this.endTurn(nextPlayer);
     }

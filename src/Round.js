@@ -6,6 +6,7 @@ class Round {
   constructor(game, puzzle) {
     this.game = game;
     this.puzzle = puzzle;
+    this.solution = puzzle.correctAnswer;
   }
 
   newTurn() {
