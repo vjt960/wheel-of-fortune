@@ -1,7 +1,5 @@
 import domUpdates from "./domUpdates";
 
-// import Data from './Data';
-
 class Turn {
   constructor(round, player) {
     this.round = round;

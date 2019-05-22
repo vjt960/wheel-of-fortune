@@ -36,7 +36,8 @@ describe('Turn', function () {
 
   it('Should be able to spin the wheel', function() {
     let result = turn.round.game.wheel.values;
-    expect(result).to.include(turn.spinWheel());
+    turn.spinWheel();
+    expect(result).to.include(turn.spinValue);
   });
 
   it('should be able to buy a vowel', function() {
