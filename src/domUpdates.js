@@ -43,6 +43,38 @@ export default {
   },
 
   addIncorrectGuess(guess) {
-    $('.incorrect-guesses').append(`<div class="letter used">${guess}</div>`);
+    $('.incorrect-guesses').append(`<div class="letter">${guess}</div>`);
+  },
+
+  displaySpinVal(game) {
+    $('#spin-val').text(game.currentRound.currentTurn.spinValue);
+  },
+
+  clearSpinVal() {
+    $('#spin-val').text('Spin that wheel!');
+  },
+
+  displayPlayerScores(game, player) {
+    const playerIndex = game.players.indexOf(player);
+    $(`#player${playerIndex}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
+  },
+
+  toggleSolveForm() {
+    $('#solve-form').toggle();
+  },
+
+  clearForm(form) {
+    $(form).val('');
+  },
+
+  clearCorrectLetters() {
+    const letters = $.makeArray($('.puzzle-char'));
+    letters.forEach(letter => letter.innerText = '');
+  },
+
+  updateTotalScore(game, player) {
+    const playerIndex = game.players.indexOf(player);
+    $('.round-score-num').text('0');
+    $(`#player${playerIndex}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
   }
 }
