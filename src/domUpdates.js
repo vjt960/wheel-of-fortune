@@ -11,8 +11,8 @@ export default {
     });
   },
 
-  updateCurrentPlayer(playerArray, index) {
-    $('.current-player').text(playerArray[index - 1].name);
+  updateCurrentPlayer(player) {
+    $('.current-player').text(player.name);
   },
 
   displayPuzzleInformation(puzzle) {
@@ -55,9 +55,8 @@ export default {
     $('#spin-val').text('Spin that wheel!');
   },
 
-  displayPlayerScores(game, player) {
-    const playerIndex = game.players.indexOf(player);
-    $(`#player${playerIndex}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
+  displayPlayerScores(game, playerId) {
+    $(`#player${playerId}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
   },
 
   toggleSolveForm() {
@@ -73,9 +72,8 @@ export default {
     letters.forEach(letter => letter.innerText = '');
   },
 
-  updateTotalScore(game, player) {
-    const playerIndex = game.players.indexOf(player);
+  updateTotalScore(game, playerId) {
     $('.round-score-num').text('0');
-    $(`#player${playerIndex}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
+    $(`#player${playerId}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
   }
 }

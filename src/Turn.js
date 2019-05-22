@@ -12,16 +12,14 @@ class Turn {
 
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
-    const thisGame = this.round.game;
-    const index = thisGame.players.indexOf(this.player);
-    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
+    const nextPlayer = this.round.game.players[this.player.id + 1] || this.round.game.players[0];
     this.spinValue = result;
     if (typeof result === 'number') {
       this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
       this.goBankrupt();
     } else {
-      this.endTurn(this.round.game.players[this.round.game.currentPlayer]);
+      this.endTurn(nextPlayer);
     }
   }
 
@@ -31,16 +29,13 @@ class Turn {
   }
 
   solvePuzzle(guess) {
-    const thisGame = this.round.game;
-    const index = thisGame.players.indexOf(this.player);
-    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateSolve(guess) === true) {
       this.player.totalScore += this.player.roundScore;
       this.player.roundScore = 0;
-      domUpdates.updateTotalScore(this.round.game, this.player);
+      domUpdates.updateTotalScore(this.round.game, this.player.id);
       this.round.endRound();
     } else {
-      this.endTurn(nextPlayer)
+      this.endTurn(this.returnNextPlayer())
     }
   }
   
@@ -54,21 +49,26 @@ class Turn {
   }
 
   endTurn(player = this.player) {
-    this.round.game.changePlayer();
+    // this.round.game.changePlayer();
     const newTurn = new Turn(this.round, player);
     this.round.currentTurn = newTurn;
-    domUpdates.updateCurrentPlayer(this.round.game.players, this.round.game.currentPlayer)
+    domUpdates.updateCurrentPlayer(this.round.game.currentPlayer);
   }
 
   letterGuessCheck(guess) {
-    const thisGame = this.round.game;
-    const index = thisGame.players.indexOf(this.player);
-    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += this.currentScore;
       this.endTurn();
     } else {
-      this.endTurn(nextPlayer);
+      this.endTurn(this.returnNextPlayer());
+    }
+  }
+
+  returnNextPlayer() {
+    if (this.round.game.players[this.player.id + 1]) {
+      return this.round.game.players[this.player.id + 1];
+    } else {
+      return this.round.game.players[0];
     }
   }
 

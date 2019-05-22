@@ -10,10 +10,10 @@ class Round {
   }
 
   newTurn() {
-    this.game.changePlayer();
+    // this.game.changePlayer();
     const turn = new Turn(this, this.game.players[this.game.currentPlayer]);
     this.currentTurn = turn;
-    domUpdates.updateCurrentPlayer(this.game.players, this.game.currentPlayer);
+    domUpdates.updateCurrentPlayer(turn.player);
   }
 
   endRound() {
