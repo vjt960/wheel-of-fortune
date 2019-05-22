@@ -4,22 +4,24 @@ class Turn {
   constructor(round, player) {
     this.round = round;
     this.player = player;
+    this.spinValue;
     this.currentScore = 0;
     this.spinResult;
   }
 
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
+    const thisGame = this.round.game;
+    const index = thisGame.players.indexOf(this.player);
+    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
+    this.spinValue = result;
     if (typeof result === 'number') {
-      this.spinResult = result;
+      this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
-      this.spinResult = 'BANKRUPT';
       this.goBankrupt();
     } else {
-      this.spinResult = 'other';
-      // this.endTurn(this.round.game.players[this.round.game.currentPlayer]);
+      this.endTurn(this.round.game.players[this.round.game.currentPlayer]);
     }
-    return result;
   }
 
   buyVowel(vowel, cost) {
@@ -32,7 +34,10 @@ class Turn {
     const index = thisGame.players.indexOf(this.player);
     const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
     if (this.round.puzzle.evaluateSolve(guess) === true) {
-      this.round.endRound()
+      this.player.totalScore += this.player.roundScore;
+      this.player.roundScore = 0;
+      domUpdates.updateTotalScore(this.round.game, this.player);
+      this.round.endRound();
     } else {
       this.endTurn(nextPlayer)
     }
@@ -40,7 +45,6 @@ class Turn {
   
   updateMoney(value) {
     this.currentScore += value;
-    console.log(this.currentScore)
   }
 
   goBankrupt() {

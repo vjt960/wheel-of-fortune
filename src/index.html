@@ -32,22 +32,22 @@
         <article class="player-card">
           <h2 class="player-1">Player 1</h2>
           <div class="score-box">
-            <p class="round-score 1-round-score">Round Score: <span class="round-score-num">0</span></p>
-            <p class="total-score">Total: <span class="total-score-num">0</span></p>
+            <p class="round-score">Round Score: <span class="round-score-num" id="player0-round-score-num">0</span></p>
+            <p class="total-score">Total: <span class="total-score-num" id="player0-total-score-num">0</span></p>
           </div>
         </article>
         <article class="player-card">
           <h2 class="player-2">Player 2</h2>
           <div class="score-box">
-            <p class="round-score 2-round-score">Round Score: <span class="round-score-num">0</span></p>
-            <p class="total-score">Total: <span class="total-score-num">0</span></p>
+            <p class="round-score">Round Score: <span class="round-score-num" id="player1-round-score-num">0</span></p>
+            <p class="total-score">Total: <span class="total-score-num" id="player1-total-score-num">0</span></p>
           </div>
         </article>
         <article class="player-card">
           <h2 class="player-3">Player 3</h2>
           <div class="score-box">
-            <p class="round-score 3-round-score">Round Score: <span class="round-score-num">0</span></p>
-            <p class="total-score">Total: <span class="total-score-num">0</span></p>
+            <p class="round-score">Round Score: <span class="round-score-num">0</span></p>
+            <p class="total-score">Total: <span class="total-score-num" id="player2-total-score-num">0</span></p>
           </div>
         </article>
       </aside>
@@ -85,7 +85,7 @@
       </section>
       <div class="arrow"></div>
       <div class="wheel">
-        <p class="spin-val"></p>
+        <p class="spin-val" id="spin-val"></p>
       </div>
       <section class="actions-container">
         <h2>Round <span class="round">1</span></h2>
@@ -94,8 +94,10 @@
         <button class="solve-btn action">Solve</button>
         <button class="guess-btn action hidden">Guess <span class="letter-guess">Letter</span></button>
         <button class="buy-btn action">Buy Vowel</button>
-        <p class="error"></p>
-        <button class="sad-btn hidden">I'm sad.</button>
+        <form hidden id="solve-form">
+          <input placeholder="Type your guess here" type="text" id="solve-input"></input>
+          <button id="solve-button">Solve</button>
+        </form>
       </section>
     </main>
   </body>

@@ -1,4 +1,3 @@
-// import this.data from './this.data';
 import Player from './Player';
 import domUpdates from './domUpdates';
 import Round from './Round'
