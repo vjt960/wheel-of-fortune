@@ -20,16 +20,22 @@ $('.start-button').click(function() {
 });
 
 $('.letter').click(function(e) {
-  $(e.target).addClass('used');
-  if ($(e.target).hasClass('letter')) {
-    $('.letter-guess').text($(e.target).text());
-    game.currentRound.puzzle.evaluateLetter($(e.target).text());
-    $(e.target).removeClass('letter');
-  }
   game.currentRound.currentTurn.letterGuessCheck($(e.currentTarget).text());
   domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player);
   domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
   domUpdates.clearSpinVal();
+//   $(e.target).addClass('used');
+//   if ($(e.target).hasClass('letter')) {
+//     $('.letter-guess').text($(e.target).text());
+//     game.currentRound.puzzle.evaluateLetter($(e.target).text());
+//     $(e.target).removeClass('letter');
+ });
+
+$('.sad-btn').click(function() {
+  game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
+  $('.error').text('')
+  $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').removeClass('hidden');
+  $('.sad-btn').addClass('hidden')
 });
 
 $('.spin-btn').click(function() {
@@ -49,4 +55,4 @@ $('.actions-container').click(function(e) {
     domUpdates.clearForm('#solve-input');
     domUpdates.toggleSolveForm();
   };
-})
+});

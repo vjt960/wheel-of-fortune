@@ -2,10 +2,10 @@
 
 let realData;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data")
-.then(function(response) {
+  .then(function(response) {
   return response.json();
 })
-.then(function(dataset) {
+  .then(function(dataset) {
   realData = dataset.data;
 });
 
