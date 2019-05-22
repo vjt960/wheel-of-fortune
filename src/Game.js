@@ -33,6 +33,7 @@ class Game {
     const round = new Round(this, this.returnPuzzle());
     round.newTurn();
     this.assignCurrentRound(round);
+    console.log(this.currentRound.puzzle.correctAnswer);
     domUpdates.displayPuzzleDescription(this.currentRound.puzzle.description);
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
   }
