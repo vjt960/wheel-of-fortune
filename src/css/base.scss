@@ -1,23 +1,34 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
-$border-color: red;
+$primary-background: white;
+$header-color: #faeee4;
+$button-color: #fcb177;
+$border: 1px solid $button-color;
+
 
 body {
   background-color: $primary-background;
   font-family: Roboto;
+  font-weight: 300;
+  margin: 0;
   text-align: center;
 }
 
 .dim {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-color: $header-color;
+  // background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   height: 100%;
   left: 0;
   margin: 0;
-  opacity: 0.5;
+  // opacity: 0.5;
   padding: 0;
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .player-start-page {
@@ -25,25 +36,59 @@ body {
   background: $primary-background;
   bottom: 0;
   display: grid;
-  grid-template-rows: 1.3fr repeat(4 1fr);
   height: 422px;
   left: 0;
   margin: auto;
   position: absolute;
   right: 0;
-  text-align: center;
   top:0;
   width: 900px;
-  z-index: 1;
+}
+
+button {
+  background-color: $button-color;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  height: 44px;
+  letter-spacing: 1px;
+  width: 115px;
+}
+
+.player-start-page button {
+  margin: auto;
+}
+
+.player-start-page div {
+  font-size: 20px;
+}
+
+input {
+  font-size: 15px;
+  height: 25px;
+  margin-left: 15px;
+  text-align: center;
+  width: 150px;
 }
 
 header, aside {
+  background-color: $header-color;
   display: flex;
   justify-content: space-around;
 }
 
+header button {
+  margin-top: 20px;
+}
+
+aside {
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
 article h2 {
-  top-margin: 15px 0px 0px;;
+  margin-top: 15px 0px 0px;;
 }
 
 main {
@@ -52,16 +97,16 @@ main {
 }
 
 .score-box {
-  border: 2px solid $border-color;
+  border-radius: 5px;
   height: 50px;
   line-height: 0.5;
-  margin: 8px;
+  margin: 0 0 20px;
   min-width: 150px;
   padding: 5px 10px 10px;
 }
 
 .puzzle-container, .actions-container {
-  border: 2px solid $border-color;
+  border-radius: 5px;
   margin: auto;
   min-height: 200px;
   padding: 10px;
@@ -69,26 +114,25 @@ main {
 }
 
 .puzzle-container {
+  border: $border;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.puzzle-char {
-  border: 1px solid $border-color;
+.puzzle-char, .space, .used {
   height: 25px;
-  margin: 84px 5px;
-  padding-top: 5px;
   width: 25px;
 }
 
-.space {
-  height: 25px;
-  width: 25px;
+.puzzle-char {
+  border: $border;
+  margin: 84px 5px;
+  padding-top: 5px;
 }
 
 .incorrect-guesses, .buy-guess {
-  border: 2px solid $border-color;
+  border: $border;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -113,22 +157,31 @@ main {
 }
 
 .letter:hover {
-  color: $border-color;
+  color: $button-color;
   cursor: pointer;
 }
 
+.used {
+  color: gray;
+}
+
+.used:hover {
+  color: gray;
+  cursor: default;
+}
+
 .arrow {
-  width: 0; 
-  height: 0; 
   border-left: 42px solid transparent;
   border-right: 42px solid transparent;
-  border-top: 60px solid $border-color;
+  border-top: 60px solid $button-color;
+  height: 0; 
   top: 625px;
+  width: 0; 
 }
 
 .wheel {
   border-radius: 50%;
-  border: 2px solid red;
+  border: solid 1px $button-color;
   height: 400px;
   top: 662px;
   width: 620px;
@@ -146,8 +199,9 @@ main {
 }
 
 .actions-container {
-  background-color: $primary-background;
-  top: 844px;
+  background-color: $header-color;
+  bottom: -355px;
+  width: 100%;
   z-index: 2;
 }
 
