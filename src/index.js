@@ -22,13 +22,45 @@ $('.letter').click(function(e) {
   $(e.target).addClass('used');
   if ($(e.target).hasClass('letter')) {
     $('.letter-guess').text($(e.target).text());
-    game.currentRound.puzzle.evaluateLetter($(e.target).text());
+    // game.currentRound.puzzle.evaluateLetter($(e.target).text());
     $(e.target).removeClass('letter');
   }
 });
 
 $('.spin-btn').click(function() {
-    game.currentRound.newTurn()
     $('.spin-val').text(game.currentRound.currentTurn.spinWheel());
+    if (typeof game.currentRound.currentTurn.spinResult === 'number') {
+      $('.guess-btn').removeClass('hidden');
+      $('.spin-btn, .solve-btn, .buy-btn, .vowel').addClass('hidden');
+      $('.error').text('Please choose a letter from the box on the right.')
+    } else if (game.currentRound.currentTurn.spinResult === 'BANKRUPT') {
+      $(`.${game.currentPlayer}-round-score`).text('0')
+      $('.error').text('You have gone bankrupt.')
+      $('.sad-btn').removeClass('hidden')
+    } else {
+      $('.error').text('You have lost your turn.')
+      $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').addClass('hidden');
+      $('.sad-btn').removeClass('hidden')
+      game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
+    }
+});
 
+$('.sad-btn').click(function() {
+  game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
+  $('.error').text('')
+  $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').removeClass('hidden');
+  $('.sad-btn').addClass('hidden')
+});
+
+$('.guess-btn').click(function() {
+  if (game.currentRound.puzzle.evaluateLetter($('.letter-guess').text())) {
+    game.currentRound.currentTurn.updateMoney(game.currentRound.currentTurn.spinResult);
+    $(`.${game.currentPlayer}-round-score`).text(`${game.currentRound.currentTurn.currentScore}`)
+  }
+  game.currentRound.currentTurn.endTurn()
+  $('.error').text('')
+  $('.guess-btn').addClass('hidden');
+  $('.spin-btn, .solve-btn, .buy-btn, .vowel').removeClass('hidden');
+  $('.letter-guess').text('Letter');
+  $('.spin-val').text('');
 });

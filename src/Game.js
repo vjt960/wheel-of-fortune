@@ -49,10 +49,9 @@ class Game {
 
   changePlayer() {
     this.currentPlayer++;
-    if (this.currentPlayer === 3) {
-      this.currentPlayer = 0;
+    if (this.currentPlayer === 4) {
+      this.currentPlayer = 1;
     }
-    // domUpdates.updateCurrentPlayer(this.players, this.currentPlayer);
   }
 
   assignCurrentRound(round) {

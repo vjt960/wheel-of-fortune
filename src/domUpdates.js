@@ -12,7 +12,7 @@ export default {
   },
 
   updateCurrentPlayer(playerArray, index) {
-    $('.current-player').text(playerArray[index].name);
+    $('.current-player').text(playerArray[index - 1].name);
   },
 
   displayPuzzleInformation(puzzle) {
@@ -21,6 +21,7 @@ export default {
   },
 
   displayPuzzleBlanks(puzzle, guess) {
+    console.log(puzzle)
     puzzle.map((character, index) => {
       if (/^[A-Za-z]+$/.test(character)) {
         $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`)
