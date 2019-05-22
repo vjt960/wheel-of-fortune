@@ -6,12 +6,14 @@ class Round {
   constructor(game, puzzle) {
     this.game = game;
     this.puzzle = puzzle;
+    this.currentTurn;
   }
 
   newTurn() {
     const turn = new Turn(this, this.game.players[0]);
     this.currentTurn = turn;
-    domUpdates.updateCurrentPlayer(this.game.players[0]);
+    this.game.changePlayer();
+    domUpdates.updateCurrentPlayer(this.game.players, this.game.currentPlayer);
   }
 
   endRound() {

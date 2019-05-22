@@ -12,6 +12,7 @@ class Game {
     this.puzzleBlock;
     this.players;
     this.currentRound;
+    this.currentPlayer = 0;
   }
 
   assignPuzzleBlock() {
@@ -44,6 +45,14 @@ class Game {
     });
     this.players = players;
     domUpdates.displayNames(this.players);
+  }
+
+  changePlayer() {
+    this.currentPlayer++;
+    if (this.currentPlayer === 3) {
+      this.currentPlayer = 0;
+    }
+    // domUpdates.updateCurrentPlayer(this.players, this.currentPlayer);
   }
 
   assignCurrentRound(round) {

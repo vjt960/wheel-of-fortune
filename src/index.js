@@ -25,4 +25,10 @@ $('.letter').click(function(e) {
     game.currentRound.puzzle.evaluateLetter($(e.target).text());
     $(e.target).removeClass('letter');
   }
-})
+});
+
+$('.spin-btn').click(function() {
+    game.currentRound.newTurn()
+    $('.spin-val').text(game.currentRound.currentTurn.spinWheel());
+
+});

@@ -11,8 +11,8 @@ export default {
     });
   },
 
-  updateCurrentPlayer(player) {
-    $('.current-player').text(player.name);
+  updateCurrentPlayer(playerArray, index) {
+    $('.current-player').text(playerArray[index].name);
   },
 
   displayPuzzleInformation(puzzle) {

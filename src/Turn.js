@@ -1,4 +1,4 @@
-// import Data from './Data';
+import domUpdates from './domUpdates';
 
 class Turn {
   constructor(round, player) {
@@ -9,9 +9,12 @@ class Turn {
 
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
-    const thisGame = this.round.game;
-    const index = thisGame.players.indexOf(this.player);
-    const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
+    // const thisGame = this.round.game;
+    // const index = thisGame.players.indexOf(this.player);
+    // const nextPlayer = thisGame.players[index + 1] || thisGame.players[0];
+    // this.round.game.changePlayer();
+    // this.player = this.round.game.players[this.round.game.currentPlayer];
+    // console.log(this.player)
     if (typeof result === 'number') {
       this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
@@ -50,6 +53,7 @@ class Turn {
   endTurn(player = this.player) {
     const newTurn = new Turn(this.round, player);
     this.round.currentTurn = newTurn;
+    domUpdates.updateCurrentPlayer(this.thisGame, this.player)
   }
 
   letterGuessCheck(guess) {
