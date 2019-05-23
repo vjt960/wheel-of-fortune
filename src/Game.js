@@ -46,6 +46,14 @@ class Game {
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
   }
 
+  reset() {
+    //keep players;
+    // new round;
+    // round.turn;
+    //domUpdates disp puzzle info;
+    //domUpdates disp puzzle blanks;
+  }
+
   createPlayers(names) {
     const players = names.map(name => {
       let player = new Player(name);

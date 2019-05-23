@@ -19,6 +19,15 @@ $('.start-button').click(function() {
   game.start();
 });
 
+$('#restart-btn').click(function() {
+  // const players = game.players;
+  // const wheel = new Wheel();
+  // wheel.createWheel();
+  // game = new Game(wheel);
+  // game.createPlayers(players);
+  // game.start();
+});
+
 $('#quit-btn').click(function() {
   location.reload();
 });
