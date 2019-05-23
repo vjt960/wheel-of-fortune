@@ -19,24 +19,29 @@ class Game {
   }
 
   assignPuzzleBlock() {
-    const newPuzzleBlock = Object.keys(this.data.puzzles).reduce((puzzBlock, puzzType) => {
-      const randomIndex = Math.floor(Math.random() * 24);
-      const instantiatedPuzzle = new Puzzle(this.data.puzzles[puzzType].puzzle_bank.find(puzz => this.data.puzzles[puzzType].puzzle_bank.indexOf(puzz) === randomIndex));
-      puzzBlock.push(instantiatedPuzzle);
-      return puzzBlock;
-    }, [])
+    const newPuzzleBlock = Object.keys(this.data.puzzles)
+      .reduce((puzzBlock, puzzType) => {
+        const randomIndex = Math.floor(Math.random() * 24);
+        const newPuzzle = new Puzzle(this.data.puzzles[puzzType].puzzle_bank
+          .find(puzz => this.data.puzzles[puzzType].puzzle_bank
+            .indexOf(puzz) === randomIndex));
+        puzzBlock.push(newPuzzle);
+        return puzzBlock;
+      }, [])
     this.puzzleBlock = newPuzzleBlock;
   }
 
   returnPuzzle() {
     this.assignPuzzleBlock();
-    return this.puzzleBlock.find((puzz, index, array) => array.indexOf(puzz) === this.roundCounter);
+    return this.puzzleBlock
+      .find((puzz, index, array) => array
+        .indexOf(puzz) === this.roundCounter);
   }
 
   start() {
     this.assignPlayerIndeces();
     const round = new Round(this, this.returnPuzzle());
-    round.newTurn(this.players[0]);
+    round.newTurn();
     this.assignCurrentRound(round);
     domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);

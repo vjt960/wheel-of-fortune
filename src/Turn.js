@@ -59,8 +59,10 @@ class Turn {
       this.player.roundScore += this.currentScore;
       guess = guess.toUpperCase();
       this.round.solution = this.round.solution.filter(letter => letter !== '')
-      this.round.solution = this.round.solution.filter(letter => letter !== '-');
-      this.round.solution = this.round.solution.filter(letter => letter !== guess);
+      this.round.solution = this.round.solution
+        .filter(letter => letter !== '-');
+      this.round.solution = this.round.solution
+        .filter(letter => letter !== guess);
       // console.log(this.round.solution);
       this.round.solution.length < 1 ? this.round.endRound() : this.endTurn();
     } else {
