@@ -20,39 +20,35 @@ $('.start-button').click(function() {
 });
 
 $('.letter').click(function(e) {
-  $(e.target).addClass('used');
-  if ($(e.target).hasClass('letter')) {
-    $('.letter-guess').text($(e.target).text());
-    // game.currentRound.puzzle.evaluateLetter($(e.target).text());
-    $(e.target).removeClass('letter');
-  }
-});
-
-$('.spin-btn').click(function() {
-    $('.spin-val').text(game.currentRound.currentTurn.spinWheel());
-    if (typeof game.currentRound.currentTurn.spinResult === 'number') {
-      $('.guess-btn').removeClass('hidden');
-      $('.spin-btn, .solve-btn, .buy-btn, .vowel').addClass('hidden');
-      $('.error').text('Please choose a letter from the box on the right.')
-    } else if (game.currentRound.currentTurn.spinResult === 'BANKRUPT') {
-      $(`.${game.currentPlayer}-round-score`).text('0')
-      $('.error').text('You have gone bankrupt.')
-      $('.sad-btn').removeClass('hidden')
-    } else {
-      $('.error').text('You have lost your turn.')
-      $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').addClass('hidden');
-      $('.sad-btn').removeClass('hidden')
-      game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
-    }
+  game.currentRound.currentTurn.letterGuessCheck($(e.currentTarget).text());
+  domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player.id);
+  domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
+  domUpdates.clearSpinVal();
+//   $(e.target).addClass('used');
+//   if ($(e.target).hasClass('letter')) {
+//     $('.letter-guess').text($(e.target).text());
+//     game.currentRound.puzzle.evaluateLetter($(e.target).text());
+//     $(e.target).removeClass('letter');
 });
 
 $('.sad-btn').click(function() {
   game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
-  $('.error').text('')
+  $('.error').text('');
   $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').removeClass('hidden');
-  $('.sad-btn').addClass('hidden')
+  $('.sad-btn').addClass('hidden');
 });
 
+$('.spin-btn').click(function() {
+  game.currentRound.currentTurn.spinWheel();
+  domUpdates.displaySpinVal(game);
+});
+
+$('.solve-btn').click(function(e) {
+  e.preventDefault();
+  domUpdates.toggleSolveForm();
+});
+
+<<<<<<< HEAD
 $('.guess-btn').click(function() {
   if (game.currentRound.puzzle.evaluateLetter($('.letter-guess').text())) {
     game.currentRound.currentTurn.updateMoney(game.currentRound.currentTurn.spinResult);
@@ -74,6 +70,8 @@ $('.solve-btn').click(function(e) {
   domUpdates.toggleSolveForm();
 });
 
+=======
+>>>>>>> 6ef8145b90dd2bc9cca6cda157b784c58d307cac
 $('.actions-container').click(function(e) {
   e.preventDefault();
   if (e.target.id === 'solve-button') {
@@ -81,4 +79,8 @@ $('.actions-container').click(function(e) {
     domUpdates.clearForm('#solve-input');
     domUpdates.toggleSolveForm();
   };
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> 6ef8145b90dd2bc9cca6cda157b784c58d307cac

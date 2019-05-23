@@ -11,7 +11,11 @@ class Game {
     this.puzzleBlock;
     this.players;
     this.currentRound;
-    this.currentPlayer = 0;
+    // this.currentPlayer = 0;
+  }
+
+  assignPlayerIndeces() {
+    this.players.forEach((player, index) => player.id = index);
   }
 
   assignPuzzleBlock() {
@@ -30,6 +34,7 @@ class Game {
   }
 
   start() {
+    this.assignPlayerIndeces();
     const round = new Round(this, this.returnPuzzle());
     round.newTurn();
     this.assignCurrentRound(round);
@@ -46,12 +51,12 @@ class Game {
     domUpdates.displayNames(this.players);
   }
 
-  changePlayer() {
-    this.currentPlayer++;
-    if (this.currentPlayer === 4) {
-      this.currentPlayer = 1;
-    }
-  }
+  // changePlayer() {
+  //   this.currentPlayer++;
+  //   if (this.currentPlayer === 4) {
+  //     this.currentPlayer = 1;
+  //   }
+  // }
 
   assignCurrentRound(round) {
     this.currentRound = round;

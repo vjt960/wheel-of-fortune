@@ -11,8 +11,8 @@ export default {
     });
   },
 
-  updateCurrentPlayer(playerArray, index) {
-    $('.current-player').text(playerArray[index - 1].name);
+  updateCurrentPlayer(player) {
+    $('.current-player').text(player.name);
   },
 
   displayPuzzleInformation(puzzle) {
@@ -55,9 +55,14 @@ export default {
     $('#spin-val').text('Spin that wheel!');
   },
 
+<<<<<<< HEAD
   displayPlayerScores(game, player) {
     const playerIndex = game.players.indexOf(player);
     $(`#player${playerIndex}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
+=======
+  displayPlayerScores(game, playerId) {
+    $(`#player${playerId}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
+>>>>>>> 6ef8145b90dd2bc9cca6cda157b784c58d307cac
   },
 
   toggleSolveForm() {
@@ -73,9 +78,15 @@ export default {
     letters.forEach(letter => letter.innerText = '');
   },
 
+<<<<<<< HEAD
   updateTotalScore(game, player) {
     const playerIndex = game.players.indexOf(player);
     $('.round-score-num').text('0');
     $(`#player${playerIndex}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
+=======
+  updateTotalScore(game, playerId) {
+    $('.round-score-num').text('0');
+    $(`#player${playerId}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
+>>>>>>> 6ef8145b90dd2bc9cca6cda157b784c58d307cac
   }
 }
