@@ -43,10 +43,14 @@ $('.sad-btn').click(function() {
 });
 
 $('.spin-btn').click(function() {
-  game.currentRound.currentTurn.spinWheel();
-  domUpdates.displaySpinVal(game);
-  $('.vowel').addClass('hidden');
-  $('.consonant').addClass('usable')
+  if ($('.letter').hasClass('usable')) {
+    domUpdates.showError('Please select a letter.');
+  } else {
+    game.currentRound.currentTurn.spinWheel();
+    domUpdates.displaySpinVal(game);
+    $('.vowel').addClass('hidden');
+    $('.consonant').addClass('usable')
+  }
 });
 
 $('.solve-btn').click(function(e) {
