@@ -19,6 +19,10 @@ $('.start-button').click(function() {
   game.start();
 });
 
+$('#quit-btn').click(function() {
+  location.reload();
+});
+
 $('.letter').click(function(e) {
   game.currentRound.currentTurn.letterGuessCheck($(e.currentTarget).text());
   domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player.id);
