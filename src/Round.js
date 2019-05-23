@@ -9,10 +9,10 @@ class Round {
     this.currentTurn;
   }
 
-  newTurn(player) {
+  newTurn(player = this.game.players[Math.floor((Math.random() * 3))]) {
     const turn = new Turn(this, player);
     this.currentTurn = turn;
-    domUpdates.updateCurrentPlayer(turn.player);
+    domUpdates.updateCurrentPlayer(this.currentTurn.player);
   }
 
   endRound() {
