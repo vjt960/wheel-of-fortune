@@ -1,4 +1,3 @@
-
 import domUpdates from './domUpdates';
 
 class Turn {
