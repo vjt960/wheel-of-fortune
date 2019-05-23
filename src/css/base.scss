@@ -144,7 +144,12 @@ article h2 {
   right: 20px;
 }
 
-.letter:hover {
+// .letter:hover {
+//   color: $accent-color;
+//   cursor: pointer;
+// }
+
+.usable:hover {
   color: $accent-color;
   cursor: pointer;
 }

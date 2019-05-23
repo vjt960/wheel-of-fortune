@@ -61,6 +61,7 @@ export default {
 
   toggleSolveForm() {
     $('#solve-form').toggle();
+    $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').toggleClass('hidden');
   },
 
   clearForm(form) {
@@ -75,5 +76,11 @@ export default {
   updateTotalScore(game, playerId) {
     $('.round-score-num').text('0');
     $(`#player${playerId}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
+  },
+
+  showError(message) {
+    $('.error').text(message);
+    $('.sad-btn').removeClass('hidden');
+    $('.spin-btn, .solve-btn, .buy-btn').addClass('hidden');
   }
 }

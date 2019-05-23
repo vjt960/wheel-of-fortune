@@ -19,11 +19,17 @@ class Turn {
     } else {
       this.endTurn(this.returnNextPlayer());
     }
+
   }
 
-  buyVowel(vowel, cost) {
-    this.currentScore -= cost;
-    this.letterGuessCheck(vowel);
+  buyVowel() {
+    if (this.player.roundScore > 100) {
+      this.player.roundScore -= 100;
+      return true;
+    } else {
+      domUpdates.showError('You cannot afford this.')
+      return false;
+    }
   }
 
   solvePuzzle(guess) {
