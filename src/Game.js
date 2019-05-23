@@ -36,7 +36,7 @@ class Game {
   start() {
     this.assignPlayerIndeces();
     const round = new Round(this, this.returnPuzzle());
-    round.newTurn();
+    round.newTurn(this.players[0]);
     this.assignCurrentRound(round);
     domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);

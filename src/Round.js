@@ -9,9 +9,9 @@ class Round {
     this.currentTurn;
   }
 
-  newTurn() {
+  newTurn(player) {
     // this.game.changePlayer();
-    const turn = new Turn(this, this.game.players[this.game.currentPlayer]);
+    const turn = new Turn(this, player);
     this.currentTurn = turn;
     domUpdates.updateCurrentPlayer(turn.player);
   }
