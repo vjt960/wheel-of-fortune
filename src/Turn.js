@@ -47,10 +47,7 @@ class Turn {
   }
 
   endTurn(player = this.player) {
-    // this.round.game.changePlayer();
     this.round.newTurn(player);
-    // const newTurn = new Turn(this.round, player);
-    // this.round.currentTurn = newTurn;
     domUpdates.updateCurrentPlayer(player);
   }
 
