@@ -7,7 +7,17 @@ import Data from '../src/Data';
 import Game from '../src/Game.js';
 import Wheel from '../src/Wheel.js';
 import Round from '../src/Round.js';
-chai.spy.on(domUpdates, ['displayPuzzleDescription', 'displayPuzzleBlanks', 'displayNames', 'updatePlayer'], () => true);
+chai.spy.on(domUpdates, [
+  'displayPuzzleDescription',
+  'displayPuzzleBlanks',
+  'displayNames',
+  'updatePlayer',
+  'updateCurrentPlayer',
+  'updateRound',
+  'clearCorrectLetters',
+  'revealCorrectGuess',
+  'addIncorrectGuess'
+], () => true);
 
 
 describe('Game', function() {
