@@ -48,30 +48,6 @@ $('.solve-btn').click(function(e) {
   domUpdates.toggleSolveForm();
 });
 
-<<<<<<< HEAD
-$('.guess-btn').click(function() {
-  if (game.currentRound.puzzle.evaluateLetter($('.letter-guess').text())) {
-    game.currentRound.currentTurn.updateMoney(game.currentRound.currentTurn.spinResult);
-    $(`.${game.currentPlayer}-round-score`).text(`${game.currentRound.currentTurn.currentScore}`)
-  }
-  game.currentRound.currentTurn.letterGuessCheck($(e.currentTarget).text());
-  domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player);
-  domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
-  domUpdates.clearSpinVal();
-});
-
-$('.spin-btn').click(function() {
-  game.currentRound.currentTurn.spinWheel();
-  domUpdates.displaySpinVal(game);
-});
-
-$('.solve-btn').click(function(e) {
-  e.preventDefault();
-  domUpdates.toggleSolveForm();
-});
-
-=======
->>>>>>> 6ef8145b90dd2bc9cca6cda157b784c58d307cac
 $('.actions-container').click(function(e) {
   e.preventDefault();
   if (e.target.id === 'solve-button') {
@@ -79,8 +55,4 @@ $('.actions-container').click(function(e) {
     domUpdates.clearForm('#solve-input');
     domUpdates.toggleSolveForm();
   };
-<<<<<<< HEAD
-})
-=======
 });
->>>>>>> 6ef8145b90dd2bc9cca6cda157b784c58d307cac
