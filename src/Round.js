@@ -1,4 +1,3 @@
-// import Data from './Data';
 import Turn from './Turn';
 import domUpdates from './domUpdates';
 
@@ -11,7 +10,6 @@ class Round {
   }
 
   newTurn(player) {
-    // this.game.changePlayer();
     const turn = new Turn(this, player);
     this.currentTurn = turn;
     domUpdates.updateCurrentPlayer(turn.player);

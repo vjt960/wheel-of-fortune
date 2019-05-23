@@ -1,4 +1,3 @@
-import Data from './Data';
 
 class Player {
   constructor(name) {
