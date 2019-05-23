@@ -13,20 +13,20 @@ describe('Puzzle', function() {
 
   it('should have default properties', function() {
     expect(puzzle.category).to.eql('Around The House');
-    expect(puzzle.correctAnswer).to.eql(['A', 'r', 'm', 'c', 'h', 'a', 'i', 'r']);
+    expect(puzzle.correctAnswer).to.eql(['A', 'R', 'M', 'C', 'H', 'A', 'I', 'R']);
   });
 
   it('Should be able to evaluate a letter guess', function() {
-    expect(puzzle.evaluateLetter('h')).to.equal(true);
-    puzzle.evaluateLetter('a');
-    puzzle.evaluateLetter('r');
+    expect(puzzle.evaluateLetter('H')).to.equal(true);
+    puzzle.evaluateLetter('A');
+    puzzle.evaluateLetter('R');
     expect(puzzle.correctGuesses.length).to.equal(3);
-    puzzle.evaluateLetter('f');
+    puzzle.evaluateLetter('F');
     expect(puzzle.incorrectGuesses.length).to.equal(1);
   });
 
   it('Should be able to evaluate a solve guess', function() {
-    expect(puzzle.evaluateSolve('armchair')).to.equal(true);
+    expect(puzzle.evaluateSolve('ARMCHAIR')).to.equal(true);
     expect(puzzle.evaluateSolve('Armchairs')).to.equal(false);
   });
-})
+});
