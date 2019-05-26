@@ -74,6 +74,10 @@ export default {
     letters.forEach(letter => letter.innerText = '');
   },
 
+  clearIncorrectLetters() {
+    $('.incorrect-guesses').children().remove();
+  },
+
   updateTotalScore(game, playerId) {
     $('.round-score-num').text('0');
     $(`#player${playerId}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)

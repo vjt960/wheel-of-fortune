@@ -41,6 +41,7 @@ class Turn {
       this.round.endRound();
     } else {
       this.endTurn(this.returnNextPlayer())
+
     }
   }
   
@@ -56,11 +57,13 @@ class Turn {
   endTurn(player = this.player) {
     this.round.newTurn(player);
     domUpdates.updateCurrentPlayer(player);
+    domUpdates.turnMessage();
+
   }
 
   letterGuessCheck(guess) {
     if (this.round.puzzle.evaluateLetter(guess) === true) {
-      this.player.roundScore += this.currentScore;
+      this.player.roundScore += (this.currentScore || 250);
       this.endTurn();
     } else {
       this.endTurn(this.returnNextPlayer());

@@ -37,7 +37,6 @@ $('.letter').click(function(e) {
 })
 
 $('.sad-btn').click(function() {
-  game.currentRound.currentTurn.endTurn(game.currentRound.currentTurn.player);
   $('.error').text('');
   $('.sad-btn').addClass('hidden');
   $('.spin-btn, .solve-btn, .buy-btn').removeClass('hidden');
@@ -59,7 +58,7 @@ $('.spin-btn').click(function() {
 $('.solve-btn').click(function(e) {
   e.preventDefault();
   domUpdates.toggleSolveForm();
-});
+});  
 
 $('.actions-container').click(function(e) {
   e.preventDefault();
@@ -67,12 +66,20 @@ $('.actions-container').click(function(e) {
     game.currentRound.currentTurn.solvePuzzle($('#solve-input').val().toUpperCase());
     domUpdates.clearForm('#solve-input');
     domUpdates.toggleSolveForm();
-  };
+  } 
+});
 
-  $('.buy-btn').click(function() {
-    if (game.currentRound.currentTurn.buyVowel()) {
-      $('.consonant').addClass('hidden');
-      $('.vowel').addClass('usable');
-    }
+$('#cancel-btn').click(function() {
+    domUpdates.toggleSolveForm();
   })
+
+$('.buy-btn').click(function() {
+  if (game.currentRound.currentTurn.buyVowel()) {
+    $('.consonant').addClass('hidden');
+    $('.vowel').addClass('usable');
+  }
+});
+
+$('#quit-btn').click(function() {
+    location.reload();
 });

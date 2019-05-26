@@ -19,6 +19,7 @@ class Round {
     this.game.roundCounter++;
     domUpdates.updateRound(this.game.roundCounter + 1);
     domUpdates.clearCorrectLetters();
+    domUpdates.clearIncorrectLetters();
     this.game.start();
   }
 }
