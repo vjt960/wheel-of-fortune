@@ -37,7 +37,6 @@ $('.letter').click(function(e) {
 })
 
 $('.sad-btn').click(function() {
-  game.currentRound.currentTurn.endTurn(game.currentRound.currentTurn.player);
   $('.error').text('');
   $('.sad-btn').addClass('hidden');
   $('.spin-btn, .solve-btn, .buy-btn').removeClass('hidden');
