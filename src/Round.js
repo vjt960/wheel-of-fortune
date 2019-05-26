@@ -9,10 +9,11 @@ class Round {
     this.currentTurn;
   }
 
-  newTurn(player = this.game.players[Math.floor((Math.random() * 3))]) {
+  newTurn(player = this.game.players[0]) {
     const turn = new Turn(this, player);
     this.currentTurn = turn;
     domUpdates.updateCurrentPlayer(this.currentTurn.player);
+    domUpdates.turnMessage();
   }
 
   endRound() {
@@ -23,4 +24,4 @@ class Round {
   }
 }
 
-export default Round;
+export default Round; 

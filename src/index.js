@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import './css/base.scss';
-import './images/turing-logo.png'
-import Game from './Game'
+import './images/turing-logo.png';
+// import Winwheel from '../javascript-winwheel/Winwheel.js';
+import Game from './Game';
 import Wheel from './Wheel';
 import domUpdates from './domUpdates';
 
@@ -19,41 +20,40 @@ $('.start-button').click(function() {
   game.start();
 });
 
-$('#restart-btn').click(function() {
-  // const players = game.players;
-  // const wheel = new Wheel();
-  // wheel.createWheel();
-  // game = new Game(wheel);
-  // game.createPlayers(players);
-  // game.start();
-});
-
-$('#quit-btn').click(function() {
-  location.reload();
-});
-
-$('.letter').click(function(e) {
+$(document).on('click', ".usable", function(e) {
   game.currentRound.currentTurn.letterGuessCheck($(e.currentTarget).text());
   domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player.id);
   domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
   domUpdates.clearSpinVal();
-//   $(e.target).addClass('used');
-//   if ($(e.target).hasClass('letter')) {
-//     $('.letter-guess').text($(e.target).text());
-//     game.currentRound.puzzle.evaluateLetter($(e.target).text());
-//     $(e.target).removeClass('letter');
+  $(e.target).addClass('used');
+  $('.letter').removeClass('usable');
+  $('.letter').removeClass('hidden');
 });
 
+$('.letter').click(function(e) {
+  if (!$(e.target).hasClass('usable')) {
+    domUpdates.showError('Spin the wheel or buy a vowel to make a guess.');
+  }
+})
+
 $('.sad-btn').click(function() {
-  game.currentRound.currentTurn.endTurn(game.players[game.currentPlayer]);
+  game.currentRound.currentTurn.endTurn(game.currentRound.currentTurn.player);
   $('.error').text('');
-  $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').removeClass('hidden');
   $('.sad-btn').addClass('hidden');
+  $('.spin-btn, .solve-btn, .buy-btn').removeClass('hidden');
 });
 
 $('.spin-btn').click(function() {
   game.currentRound.currentTurn.spinWheel();
-  domUpdates.displaySpinVal(game);
+  // domUpdates.displaySpinVal(game);
+  if ($('.letter').hasClass('usable')) {
+    domUpdates.showError('Please select a letter.');
+  } else {
+    game.currentRound.currentTurn.spinWheel();
+    domUpdates.displaySpinVal(game);
+    $('.vowel').addClass('hidden');
+    $('.consonant').addClass('usable')
+  }
 });
 
 $('.solve-btn').click(function(e) {
@@ -68,4 +68,11 @@ $('.actions-container').click(function(e) {
     domUpdates.clearForm('#solve-input');
     domUpdates.toggleSolveForm();
   };
+
+  $('.buy-btn').click(function() {
+    if (game.currentRound.currentTurn.buyVowel()) {
+      $('.consonant').addClass('hidden');
+      $('.vowel').addClass('usable');
+    }
+  })
 });

@@ -51,6 +51,10 @@
           </div>
         </article>
       </aside>
+      <h1 class="ml4">
+        <span class="letters letters-1">Player one</span>
+        <span class="letters letters-2">Your turn</span>
+      </h1>
       <section class="puzzle-container"></section>
       <p>Category: <span class="puzzle-category"></span></p>
       <p class="puzzle-description"></p>
@@ -90,15 +94,17 @@
       <section class="actions-container">
         <h2>Round <span class="round">1</span></h2>
         <h3><span class="current-player"></span>'s Turn</h3>
+        <p class="error"></p>
         <button class="spin-btn action">Spin</button>
         <button class="solve-btn action">Solve</button>
-        <button class="guess-btn action hidden">Guess <span class="letter-guess">Letter</span></button>
         <button class="buy-btn action">Buy Vowel</button>
+        <button class="sad-btn hidden">Okay</button>
         <form hidden id="solve-form">
           <input placeholder="Type your guess here" type="text" id="solve-input"></input>
           <button id="solve-button">Solve</button>
         </form>
       </section>
     </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
   </body>
 </html>

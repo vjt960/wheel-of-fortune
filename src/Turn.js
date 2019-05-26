@@ -12,6 +12,7 @@ class Turn {
   spinWheel() {
     const result = this.round.game.wheel.returnResult();
     this.spinValue = result;
+    domUpdates.displaySpinVal(this.round.game);
     if (typeof result === 'number') {
       this.updateMoney(result);
     } else if (result === 'BANKRUPT') {
@@ -19,11 +20,17 @@ class Turn {
     } else {
       this.endTurn(this.returnNextPlayer());
     }
+
   }
 
-  buyVowel(vowel, cost) {
-    this.currentScore -= cost;
-    this.letterGuessCheck(vowel);
+  buyVowel() {
+    if (this.player.roundScore > 100) {
+      this.player.roundScore -= 100;
+      return true;
+    } else {
+      domUpdates.showError('You cannot afford this.')
+      return false;
+    }
   }
 
   solvePuzzle(guess) {
@@ -43,7 +50,7 @@ class Turn {
 
   goBankrupt() {
     this.player.roundScore = 0;
-    this.endTurn();
+    this.endTurn(this.returnNextPlayer());
   }
 
   endTurn(player = this.player) {
