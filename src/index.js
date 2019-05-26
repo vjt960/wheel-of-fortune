@@ -37,22 +37,18 @@ $('.letter').click(function(e) {
 })
 
 $('.sad-btn').click(function() {
-  game.currentRound.currentTurn.endTurn(game.currentRound.currentTurn.player);
   $('.error').text('');
   $('.sad-btn').addClass('hidden');
   $('.spin-btn, .solve-btn, .buy-btn').removeClass('hidden');
 });
 
 $('.spin-btn').click(function() {
-  game.currentRound.currentTurn.spinWheel();
-  // domUpdates.displaySpinVal(game);
-  if ($('.letter').hasClass('usable')) {
+  if (game.currentRound.currentTurn.hasSpun === true) {
     domUpdates.showError('Please select a letter.');
   } else {
     game.currentRound.currentTurn.spinWheel();
-    domUpdates.displaySpinVal(game);
     $('.vowel').addClass('hidden');
-    $('.consonant').addClass('usable')
+    $('.consonant').addClass('usable');
   }
 });
 
