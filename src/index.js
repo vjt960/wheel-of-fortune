@@ -79,3 +79,7 @@ $('.buy-btn').click(function() {
     $('.vowel').addClass('usable');
   }
 });
+
+$('#quit-btn').click(function() {
+    location.reload();
+});
