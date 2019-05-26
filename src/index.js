@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import './css/base.scss';
-import './images/turing-logo.png'
-import Game from './Game'
+import './images/turing-logo.png';
+// import Winwheel from '../javascript-winwheel/Winwheel.js';
+import Game from './Game';
 import Wheel from './Wheel';
 import domUpdates from './domUpdates';
 
@@ -40,7 +41,7 @@ $('.sad-btn').click(function() {
 
 $('.spin-btn').click(function() {
   game.currentRound.currentTurn.spinWheel();
-  domUpdates.displaySpinVal(game);
+  // domUpdates.displaySpinVal(game);
 });
 
 $('.solve-btn').click(function(e) {

@@ -13,6 +13,7 @@ export default {
 
   updateCurrentPlayer(player) {
     $('.current-player').text(player.name);
+    $('.letters-1').text(player.name);
   },
 
   displayPuzzleInformation(puzzle) {
@@ -75,5 +76,47 @@ export default {
   updateTotalScore(game, playerId) {
     $('.round-score-num').text('0');
     $(`#player${playerId}-total-score-num`).text(game.currentRound.currentTurn.player.totalScore)
+  },
+
+  turnMessage() {
+    const ml4 = {};
+    ml4.opacityIn = [0, 1];
+    ml4.scaleIn = [0.2, 2];
+    ml4.scaleOut = 3;
+    ml4.durationIn = 600;
+    ml4.durationOut = 600;
+    ml4.delay = 500;
+
+    anime.timeline({ loop: false })
+      .add({
+        targets: '.ml4 .letters-1',
+        opacity: ml4.opacityIn,
+        scale: ml4.scaleIn,
+        duration: ml4.durationIn
+      }).add({
+        targets: '.ml4 .letters-1',
+        opacity: 0,
+        scale: ml4.scaleOut,
+        duration: ml4.durationOut,
+        easing: "easeInExpo",
+        delay: ml4.delay
+      }).add({
+        targets: '.ml4 .letters-2',
+        opacity: ml4.opacityIn,
+        scale: ml4.scaleIn,
+        duration: ml4.durationIn
+      }).add({
+        targets: '.ml4 .letters-2',
+        opacity: 0,
+        scale: ml4.scaleOut,
+        duration: ml4.durationOut,
+        easing: "easeInExpo",
+        delay: ml4.delay
+      }).add({
+        targets: '.ml4',
+        opacity: 1,
+        duration: 500,
+        delay: 500
+      });
   }
 }
