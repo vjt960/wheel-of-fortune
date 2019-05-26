@@ -59,6 +59,7 @@ class Turn {
   }
 
   letterGuessCheck(guess) {
+    console.log(this.currentScore)
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += (this.currentScore || 250);
       this.endTurn();
