@@ -1,4 +1,4 @@
-// import fetch from 'cross-fetch';
+import fetch from 'cross-fetch';
 
 let realData;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data")
