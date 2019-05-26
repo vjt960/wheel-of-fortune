@@ -43,15 +43,12 @@ $('.sad-btn').click(function() {
 });
 
 $('.spin-btn').click(function() {
-  game.currentRound.currentTurn.spinWheel();
-  // domUpdates.displaySpinVal(game);
-  if ($('.letter').hasClass('usable')) {
+  if (game.currentRound.currentTurn.hasSpun === true) {
     domUpdates.showError('Please select a letter.');
   } else {
     game.currentRound.currentTurn.spinWheel();
-    domUpdates.displaySpinVal(game);
     $('.vowel').addClass('hidden');
-    $('.consonant').addClass('usable')
+    $('.consonant').addClass('usable');
   }
 });
 

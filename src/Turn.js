@@ -5,8 +5,8 @@ class Turn {
     this.round = round;
     this.player = player;
     this.spinValue;
+    this.hasSpun = false;
     this.currentScore = 0;
-    this.spinResult;
   }
 
   spinWheel() {
@@ -20,7 +20,7 @@ class Turn {
     } else {
       this.endTurn(this.returnNextPlayer());
     }
-
+    this.hasSpun = true;
   }
 
   buyVowel() {
