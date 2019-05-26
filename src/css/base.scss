@@ -98,7 +98,7 @@ article h2 {
   padding: 5px 10px 10px;
 }
 
-.puzzle-container, .actions-container {
+.actions-container {
   border-radius: 5px;
   margin: auto;
   min-height: 200px;
@@ -107,10 +107,11 @@ article h2 {
 }
 
 .puzzle-container {
-  border: $border;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  margin: auto;
 }
 
 .puzzle-char, .space, .used, .letter {
@@ -144,7 +145,12 @@ article h2 {
   right: 20px;
 }
 
-.letter:hover {
+// .letter:hover {
+//   color: $accent-color;
+//   cursor: pointer;
+// }
+
+.usable:hover {
   color: $accent-color;
   cursor: pointer;
 }

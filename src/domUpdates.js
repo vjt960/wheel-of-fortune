@@ -62,6 +62,7 @@ export default {
 
   toggleSolveForm() {
     $('#solve-form').toggle();
+    $('.spin-btn, .solve-btn, .guess-btn, .buy-btn').toggleClass('hidden');
   },
 
   clearForm(form) {
@@ -118,5 +119,11 @@ export default {
         duration: 500,
         delay: 500
       });
+  },
+
+  showError(message) {
+    $('.error').text(message);
+    $('.sad-btn').removeClass('hidden');
+    $('.spin-btn, .solve-btn, .buy-btn').addClass('hidden');
   }
 }
