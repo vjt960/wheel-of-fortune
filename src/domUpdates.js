@@ -22,14 +22,14 @@ export default {
   },
 
   displayPuzzleBlanks(puzzle, guess) {
-    console.log(puzzle)
-    puzzle.map((character, index) => {
-      if (/^[A-Za-z]+$/.test(character)) {
-        $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`)
+    console.log(puzzle);
+    puzzle.forEach((character, index) => {
+      if (/^[A-Z]+$/.test(character)) {
+        $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`);
       } else {
-        $('.puzzle-container').append(`<div class="space char-${index}"></div>`)
+        $('.puzzle-container').append(`<div class="space char-${index}"></div>`);
       }
-    })
+    });
   },
 
   updateRound(round) {
@@ -58,6 +58,10 @@ export default {
 
   displayPlayerScores(game, playerId) {
     $(`#player${playerId}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
+    $(`#player${playerId}-round-score-num`).addClass('score-transition');
+    setTimeout(function() {
+      $(`#player${playerId}-round-score-num`).removeClass('score-transition');
+    }, 1000);
   },
 
   toggleSolveForm() {
@@ -70,8 +74,7 @@ export default {
   },
 
   clearCorrectLetters() {
-    const letters = $.makeArray($('.puzzle-char'));
-    letters.forEach(letter => letter.innerText = '');
+    $('.puzzle-char').hide();
   },
 
   clearIncorrectLetters() {

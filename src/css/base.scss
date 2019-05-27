@@ -51,7 +51,12 @@ button {
   font-size: 15px;
   height: 44px;
   letter-spacing: 1px;
+  transition: all .2s ease-in-out;
   width: 115px;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
 }
 
 .player-start-page button {
@@ -96,6 +101,52 @@ article h2 {
   margin: 0 0 20px;
   min-width: 150px;
   padding: 5px 10px 10px;
+}
+
+@keyframes scale {
+  0% {
+    font-size: 16pt;
+    color: #000000;
+  }
+  15% {
+    font-size: 22pt;
+    color: #0C1900;
+  }
+  25% {
+    font-size: 26pt;
+    color: #193300;
+  }
+  35% {
+    font-size: 30pt;
+    color: #264C00;
+  }
+  50% {
+    font-size: 56pt;
+    color: #326600;
+  }
+  65% {
+    font-size: 30pt;
+    color: #3F7F00;
+  }
+  75% {
+    font-size: 26pt;
+    color: #4C9900;
+  }
+  85% {
+    font-size: 22pt;
+    color: #58B200;
+  }
+  100% {
+    font-size: 16pt;
+    color: black;
+  }
+}
+
+.score-transition {
+  font-weight: 700;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-name: scale;
 }
 
 .actions-container {
@@ -150,8 +201,13 @@ article h2 {
 //   cursor: pointer;
 // }
 
+.usable {
+  transition: all .2s ease-in-out;
+}
+
 .usable:hover {
   color: $accent-color;
+  transform: scale(1.9);
   cursor: pointer;
 }
 
@@ -213,7 +269,6 @@ article h2 {
 
 .ml4 {
   color: rgba(21, 182, 37, 0.5);
-  text-shadow: 1px 1px 2px black, 0 0 25px lightgray, 0 0 5px darkgray;
   position: relative;
   font-weight: 900;
   font-size: 4.5em;

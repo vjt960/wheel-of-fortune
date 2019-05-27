@@ -55,6 +55,7 @@ class Turn {
   }
 
   endTurn(player = this.player) {
+    domUpdates.displayPlayerScores(this.round.game, this.player.id);
     this.round.newTurn(player);
     domUpdates.updateCurrentPlayer(player);
   }
