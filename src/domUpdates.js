@@ -29,9 +29,9 @@ export default {
       } else if (/^[&-]$/) {
         $('.puzzle-container').append(`<div class="space char-${index}">${character}</div>`)
       } else {
-        $('.puzzle-container').append(`<div class="space char-${index}"></div>`)
+        $('.puzzle-container').append(`<div class="space char-${index}"></div>`);
       }
-    })
+    });
   },
 
   useLetter(letter) {
@@ -70,6 +70,10 @@ export default {
 
   displayPlayerScores(game, playerId) {
     $(`#player${playerId}-round-score-num`).text(game.currentRound.currentTurn.player.roundScore);
+    $(`#player${playerId}-round-score-num`).addClass('score-transition');
+    setTimeout(function() {
+      $(`#player${playerId}-round-score-num`).removeClass('score-transition');
+    }, 1000);
   },
 
   toggleSolveForm() {

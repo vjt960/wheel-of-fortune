@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png';
-// import Winwheel from '../javascript-winwheel/Winwheel.js';
 import Game from './Game';
 import Wheel from './Wheel';
 import domUpdates from './domUpdates';
