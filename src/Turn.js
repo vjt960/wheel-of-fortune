@@ -5,8 +5,8 @@ class Turn {
     this.round = round;
     this.player = player;
     this.spinValue;
+    this.hasSpun = false;
     this.currentScore = 0;
-    this.spinResult;
   }
 
   spinWheel() {
@@ -20,7 +20,7 @@ class Turn {
     } else {
       this.endTurn(this.returnNextPlayer());
     }
-
+    this.hasSpun = true;
   }
 
   buyVowel() {
@@ -41,6 +41,7 @@ class Turn {
       this.round.endRound();
     } else {
       this.endTurn(this.returnNextPlayer())
+
     }
   }
   
@@ -60,15 +61,8 @@ class Turn {
 
   letterGuessCheck(guess) {
     if (this.round.puzzle.evaluateLetter(guess) === true) {
-      this.player.roundScore += this.currentScore;
-      guess = guess.toUpperCase();
-      this.round.solution = this.round.solution.filter(letter => letter !== '')
-      this.round.solution = this.round.solution
-        .filter(letter => letter !== '-');
-      this.round.solution = this.round.solution
-        .filter(letter => letter !== guess);
-      // console.log(this.round.solution);
-      this.round.solution.length < 1 ? this.round.endRound() : this.endTurn();
+      this.player.roundScore += (this.currentScore || 250);
+      this.endTurn();
     } else {
       this.endTurn(this.returnNextPlayer());
     }

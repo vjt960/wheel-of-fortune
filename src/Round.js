@@ -10,16 +10,19 @@ class Round {
   }
 
   newTurn(player = this.game.players[0]) {
+    if (this.currentTurn === undefined || player.name !== this.currentTurn.player.name) {
+      domUpdates.turnMessage();
+    }
     const turn = new Turn(this, player);
     this.currentTurn = turn;
     domUpdates.updateCurrentPlayer(this.currentTurn.player);
-    domUpdates.turnMessage();
   }
 
   endRound() {
     this.game.roundCounter++;
     domUpdates.updateRound(this.game.roundCounter + 1);
     domUpdates.clearCorrectLetters();
+    domUpdates.clearIncorrectLetters();
     this.game.start();
   }
 }

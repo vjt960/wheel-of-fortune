@@ -21,11 +21,13 @@ export default {
     $('.puzzle-category').text(puzzle.category)
   },
 
-  displayPuzzleBlanks(puzzle, guess) {
+  displayPuzzleBlanks(puzzle) {
     console.log(puzzle)
     puzzle.map((character, index) => {
-      if (/^[A-Za-z]+$/.test(character)) {
+      if (/^[A-Z]+$/.test(character)) {
         $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`)
+      } else if (/^[&-]$/) {
+        $('.puzzle-container').append(`<div class="space char-${index}">${character}</div>`)
       } else {
         $('.puzzle-container').append(`<div class="space char-${index}"></div>`)
       }
@@ -70,8 +72,11 @@ export default {
   },
 
   clearCorrectLetters() {
-    const letters = $.makeArray($('.puzzle-char'));
-    letters.forEach(letter => letter.innerText = '');
+    $('.puzzle-char, .space').remove()
+  },
+
+  clearIncorrectLetters() {
+    $('.incorrect-guesses').children().remove();
   },
 
   updateTotalScore(game, playerId) {
