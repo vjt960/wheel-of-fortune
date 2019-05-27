@@ -141,19 +141,7 @@ article h2,
 
 .puzzle-char {
   border: $border;
-  // display: inline-block;
-  // margin: 5px;
-  // padding-top: 5px;
 }
-
-// .space {
-//   display: block;
-// }
-
-// .space::before {
-//   content: attr(data-text);
-//   padding: 1px 8px;
-// }
 
 .incorrect-guesses, .buy-guess {
   border: $border;
@@ -161,28 +149,27 @@ article h2,
   display: flex;
   flex-wrap: wrap;
   grid-row-start: 1;
-  height: 200px;
   padding: 5px;
-  // position: absolute;
-  // top: 484px;
-  // top: 264px;
   z-index: 1;
   width: 200px;
 }
 
 .incorrect-guesses {
   grid-column-start: 1;
-  // left: 20px;
 }
 
 .buy-guess {
   grid-column-start: 3;
-  // right: 20px;
+}
+
+.usable {
+  margin: 7px;
 }
 
 .usable:hover {
   color: $accent-color;
   cursor: pointer;
+  font-size: 25px;
 }
 
 .used {
@@ -199,20 +186,30 @@ article h2,
   border-right: 42px solid transparent;
   border-top: 60px solid $accent-color;
   height: 0; 
-  // top: 625px;
   top: 455px;
   width: 0; 
+  z-index: 2;
 }
 
 .wheel {
   border-radius: 50%;
-  border: solid 1px #fcb177;
-  height: 200px;
+  // border: solid 1px #fcb177;
+  height: 400px;
   top: 483px;
-  width: 300px;
+  width: 600px;
+  background: 
+    linear-gradient(36deg, $accent-color, transparent 42.34%) 0 0,
+    linear-gradient(72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 0 0,
+    linear-gradient(-36deg, $accent-color, 42.34%, transparent 42.34%) 100% 0,
+    linear-gradient(-72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 100% 0,  
+    lighten($accent-color, 20%) linear-gradient(red, purple) 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
 }
 
 .spin-val {
+  color: $accent-color;
+  font-size: 50px;
   margin: 33px;
 }
 
@@ -226,10 +223,10 @@ article h2,
 .actions-container {
   background-color: #faeee4;
   border-radius: 5px;
-  bottom: -63px;
+  bottom: -220px;
   line-height: 0.5;
   margin: 0;
-  min-height: 180px;
+  min-height: 250px;
   padding: 10px;
   width: 100%;
   z-index: 2;
