@@ -21,11 +21,13 @@ export default {
     $('.puzzle-category').text(puzzle.category)
   },
 
-  displayPuzzleBlanks(puzzle, guess) {
-    console.log(puzzle);
-    puzzle.forEach((character, index) => {
+  displayPuzzleBlanks(puzzle) {
+    console.log(puzzle)
+    puzzle.map((character, index) => {
       if (/^[A-Z]+$/.test(character)) {
-        $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`);
+        $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`)
+      } else if (/^[&-]$/) {
+        $('.puzzle-container').append(`<div class="space char-${index}">${character}</div>`)
       } else {
         $('.puzzle-container').append(`<div class="space char-${index}"></div>`);
       }
@@ -74,7 +76,7 @@ export default {
   },
 
   clearCorrectLetters() {
-    $('.puzzle-char').hide();
+    $('.puzzle-char, .space').remove()
   },
 
   clearIncorrectLetters() {
