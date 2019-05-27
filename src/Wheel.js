@@ -1,11 +1,11 @@
 let realData;
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/wheel-of-fortune/data")
   .then(function(response) {
-  return response.json();
-})
+    return response.json();
+  })
   .then(function(dataset) {
-  realData = dataset.data;
-});
+    realData = dataset.data;
+  });
 
 class Wheel {
   constructor(dataset = realData) {
