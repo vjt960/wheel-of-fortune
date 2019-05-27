@@ -69,9 +69,11 @@ $('#cancel-btn').click(function() {
   })
 
 $('.buy-btn').click(function() {
-  if (game.currentRound.currentTurn.buyVowel()) {
+  if (game.currentRound.currentTurn.buyVowel() && (!game.currentRound.currentTurn.hasSpun)) {
     $('.consonant').addClass('hidden');
     $('.vowel').addClass('usable');
+  } if (game.currentRound.currentTurn.hasSpun) {
+    domUpdates.showError('You can only choose a consonant after spinning. You may buy a vowel on your next turn if you have the funds.')
   }
 });
 
