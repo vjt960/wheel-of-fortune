@@ -140,5 +140,11 @@ export default {
     $('.error').text(message);
     $('.sad-btn').removeClass('hidden');
     $('.spin-btn, .solve-btn, .buy-btn').addClass('hidden');
+  },
+
+  showHelp(message) {
+    setTimeout(function() { 
+      $('.help').text(message); 
+    }, 8000);
   }
 }

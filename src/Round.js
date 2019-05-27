@@ -15,6 +15,7 @@ class Round {
     const turn = new Turn(this, player);
     this.currentTurn = turn;
     domUpdates.updateCurrentPlayer(this.currentTurn.player);
+    domUpdates.showHelp('Click "Spin" for a chance to guess a consonant and score points, potentially lose your turn, or go bankrupt. Click "Solve" if you think you know what the answer is. Click "Buy Vowel" if you have more than 100 points and want to guess a vowel.');
   }
 
   endRound() {

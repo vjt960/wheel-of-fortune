@@ -232,12 +232,23 @@ article h2,
   z-index: 2;
 }
 
+.actions-container button {
+  margin-bottom: 10px;
+}
+
 .active {
   color: $primary-background;
 }
 
 .error {
   color: red;
+}
+
+.help {
+  color: $accent-color;
+  line-height: 1;
+  margin: auto;
+  width: 800px;
 }
 
 .hidden {
