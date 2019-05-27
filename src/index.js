@@ -25,9 +25,7 @@ $(document).on('click', ".usable", function(e) {
   domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player.id);
   domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
   domUpdates.clearSpinVal();
-  $(e.target).addClass('used');
-  $('.letter').removeClass('usable');
-  $('.letter').removeClass('hidden');
+  domUpdates.useLetter(e.target);
 });
 
 $('.letter').click(function(e) {

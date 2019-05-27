@@ -22,6 +22,7 @@ class Round {
     domUpdates.updateRound(this.game.roundCounter + 1);
     domUpdates.clearCorrectLetters();
     domUpdates.clearIncorrectLetters();
+    domUpdates.reanimateUsedLetters();
     this.game.start();
   }
 }

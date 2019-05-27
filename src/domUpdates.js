@@ -34,6 +34,16 @@ export default {
     })
   },
 
+  useLetter(letter) {
+    $(letter).addClass('used');
+    $('.letter').removeClass('usable');
+    $('.letter').removeClass('hidden');
+  },
+
+  reanimateUsedLetters() {
+    $('.used').removeClass('used');
+  },
+
   updateRound(round) {
     $('.round').text(round);
   },
