@@ -76,7 +76,8 @@ class Game {
   }
   
   findWinner() {
-    let placement = this.players.sort((a, b) => b.totalScore - a.totalScore);
+    let placement = this.players.slice()
+      .sort((a, b) => b.totalScore - a.totalScore);
     this.winner = placement.shift();
   }
 
