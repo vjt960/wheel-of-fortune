@@ -57,8 +57,6 @@ class Turn {
   endTurn(player = this.player) {
     this.round.newTurn(player);
     domUpdates.updateCurrentPlayer(player);
-    domUpdates.turnMessage();
-
   }
 
   letterGuessCheck(guess) {

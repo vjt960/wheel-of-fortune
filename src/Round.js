@@ -5,6 +5,7 @@ class Round {
   constructor(game, puzzle) {
     this.game = game;
     this.puzzle = puzzle;
+    this.solution = puzzle.correctAnswer;
     this.currentTurn;
   }
 
@@ -24,7 +25,11 @@ class Round {
     domUpdates.clearCorrectLetters();
     domUpdates.clearIncorrectLetters();
     domUpdates.reanimateUsedLetters();
-    this.game.start();
+    if (this.game.roundCounter > 3) {
+      this.game.startBonusRound();
+    } else {
+      this.game.start();
+    }
   }
 }
 

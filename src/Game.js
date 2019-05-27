@@ -11,6 +11,7 @@ class Game {
     this.puzzleBlock;
     this.players;
     this.currentRound;
+    this.winner;
   }
 
   assignPlayerIndeces() {
@@ -18,18 +19,23 @@ class Game {
   }
 
   assignPuzzleBlock() {
-    const newPuzzleBlock = Object.keys(this.data.puzzles).reduce((puzzBlock, puzzType) => {
-      const randomIndex = Math.floor(Math.random() * 24);
-      const instantiatedPuzzle = new Puzzle(this.data.puzzles[puzzType].puzzle_bank.find(puzz => this.data.puzzles[puzzType].puzzle_bank.indexOf(puzz) === randomIndex));
-      puzzBlock.push(instantiatedPuzzle);
-      return puzzBlock;
-    }, [])
+    const newPuzzleBlock = Object.keys(this.data.puzzles)
+      .reduce((puzzBlock, puzzType) => {
+        const randomIndex = Math.floor(Math.random() * 24);
+        const newPuzzle = new Puzzle(this.data.puzzles[puzzType].puzzle_bank
+          .find(puzz => this.data.puzzles[puzzType].puzzle_bank
+            .indexOf(puzz) === randomIndex));
+        puzzBlock.push(newPuzzle);
+        return puzzBlock;
+      }, [])
     this.puzzleBlock = newPuzzleBlock;
   }
 
   returnPuzzle() {
     this.assignPuzzleBlock();
-    return this.puzzleBlock.find((puzz, index, array) => array.indexOf(puzz) === this.roundCounter);
+    return this.puzzleBlock
+      .find((puzz, index, array) => array
+        .indexOf(puzz) === this.roundCounter);
   }
 
   start() {
@@ -39,6 +45,21 @@ class Game {
     this.assignCurrentRound(round);
     domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
+  }
+
+  startBonusRound() {
+    this.findWinner();
+    console.log(`initiating bonus round with: `, this.winner);
+    this.reset();
+    //let winner start bonus round;
+  }
+
+  reset() {
+    //keep players;
+    // new round;
+    // round.turn;
+    //domUpdates disp puzzle info;
+    //domUpdates disp puzzle blanks;
   }
 
   createPlayers(names) {
@@ -55,8 +76,8 @@ class Game {
   }
   
   findWinner() {
-    // if roundCounter is 4, find player with highest score
-    // assign this.winner to that player
+    let placement = this.players.sort((a, b) => b.totalScore - a.totalScore);
+    this.winner = placement.shift();
   }
 
   endGame() {
