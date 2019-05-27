@@ -82,73 +82,103 @@ header button {
 
 aside {
   font-weight: 300;
+  line-height: 0;
   margin-bottom: 20px;
 }
 
-article h2 {
-  margin-top: 15px 0px 0px;;
+article h2,
+.actions-container h3 {
+  font-weight: 300;
 }
 
 .score-box {
+  background-color: white;
   border-radius: 5px;
   height: 50px;
   line-height: 0.5;
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   min-width: 150px;
   padding: 5px 10px 10px;
 }
 
-.actions-container {
-  border-radius: 5px;
-  margin: auto;
-  min-height: 200px;
-  padding: 10px;
-  width: 900px;
+.puzzle-info {
+  margin: 0;
+}
+
+.middle {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+}
+
+.middle section {
+  margin-top: 15px;
 }
 
 .puzzle-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  grid-column-start: 2;
+  grid-row-start: 1;
   justify-content: center;
   margin: auto;
+  margin-top: 10px;
 }
 
 .puzzle-char, .space, .used, .letter {
+  grid-column-start: 2;
+  grid-row-start: 1;
   height: 25px;
+  margin: 5px;
+  padding-top: 5px;
   width: 25px;
+}
+
+.letter, .used {
+  margin: 3px;
 }
 
 .puzzle-char {
   border: $border;
-  margin: 84px 5px;
-  padding-top: 5px;
+  // display: inline-block;
+  // margin: 5px;
+  // padding-top: 5px;
 }
+
+// .space {
+//   display: block;
+// }
+
+// .space::before {
+//   content: attr(data-text);
+//   padding: 1px 8px;
+// }
 
 .incorrect-guesses, .buy-guess {
   border: $border;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  height: 275px;
-  padding: 20px 20px 0;
-  position: absolute;
-  top: 484px;
+  grid-row-start: 1;
+  height: 200px;
+  padding: 5px;
+  // position: absolute;
+  // top: 484px;
+  // top: 264px;
+  z-index: 1;
   width: 200px;
 }
 
 .incorrect-guesses {
-  left: 20px;
+  grid-column-start: 1;
+  // left: 20px;
 }
 
 .buy-guess {
-  right: 20px;
+  grid-column-start: 3;
+  // right: 20px;
 }
-
-// .letter:hover {
-//   color: $accent-color;
-//   cursor: pointer;
-// }
 
 .usable:hover {
   color: $accent-color;
@@ -169,16 +199,17 @@ article h2 {
   border-right: 42px solid transparent;
   border-top: 60px solid $accent-color;
   height: 0; 
-  top: 625px;
+  // top: 625px;
+  top: 455px;
   width: 0; 
 }
 
 .wheel {
   border-radius: 50%;
-  border: solid 1px $accent-color;
-  height: 400px;
-  top: 662px;
-  width: 620px;
+  border: solid 1px #fcb177;
+  height: 200px;
+  top: 483px;
+  width: 300px;
 }
 
 .spin-val {
@@ -193,8 +224,13 @@ article h2 {
 }
 
 .actions-container {
-  background-color: $secondary-background;
-  bottom: -355px;
+  background-color: #faeee4;
+  border-radius: 5px;
+  bottom: -63px;
+  line-height: 0.5;
+  margin: 0;
+  min-height: 180px;
+  padding: 10px;
   width: 100%;
   z-index: 2;
 }
@@ -213,16 +249,17 @@ article h2 {
 
 .ml4 {
   color: rgba(21, 182, 37, 0.5);
-  text-shadow: 1px 1px 2px black, 0 0 25px lightgray, 0 0 5px darkgray;
-  position: relative;
-  font-weight: 900;
   font-size: 4.5em;
+  font-weight: 900;
+  margin: 0;
+  position: relative;
+  text-shadow: 1px 1px 2px black, 0 0 25px lightgray, 0 0 5px darkgray;
 }
 .ml4 .letters {
-  position: absolute;
-  margin: auto;
   left: 0;
-  top: 0em;
-  right: 0;
+  margin: auto;
   opacity: 0; 
+  position: absolute;
+  right: 0;
+  top: 0em;
 }
