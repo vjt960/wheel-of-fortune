@@ -34,6 +34,16 @@ export default {
     })
   },
 
+  useLetter(letter) {
+    $(letter).addClass('used');
+    $('.letter').removeClass('usable');
+    $('.letter').removeClass('hidden');
+  },
+
+  reanimateUsedLetters() {
+    $('.used').removeClass('used');
+  },
+
   updateRound(round) {
     $('.round').text(round);
   },
@@ -130,5 +140,11 @@ export default {
     $('.error').text(message);
     $('.sad-btn').removeClass('hidden');
     $('.spin-btn, .solve-btn, .buy-btn').addClass('hidden');
+  },
+
+  showHelp(message) {
+    setTimeout(function() { 
+      $('.help').text(message); 
+    }, 8000);
   }
 }
