@@ -11,6 +11,7 @@ class Game {
     this.puzzleBlock;
     this.players;
     this.currentRound;
+    this.winner;
   }
 
   assignPlayerIndeces() {
@@ -46,6 +47,13 @@ class Game {
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
   }
 
+  startBonusRound() {
+    this.findWinner();
+    console.log(`initiating bonus round with: `, this.winner);
+    this.reset();
+    //let winner start bonus round;
+  }
+
   reset() {
     //keep players;
     // new round;
@@ -68,8 +76,8 @@ class Game {
   }
   
   findWinner() {
-    // if roundCounter is 4, find player with highest score
-    // assign this.winner to that player
+    let placement = this.players.sort((a, b) => b.totalScore - a.totalScore);
+    this.winner = placement.shift();
   }
 
   endGame() {
