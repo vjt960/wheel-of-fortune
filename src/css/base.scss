@@ -153,7 +153,7 @@ article h2,
 }
 
 main {
-  height: 850px;
+  height: 650px;
   position: relative;
 }
 
@@ -253,20 +253,20 @@ main {
 }
 
 .arrow {
-  border-left: 42px solid transparent;
-  border-right: 42px solid transparent;
-  border-top: 60px solid $accent-color;
-  height: 0; 
-  top: 320px;
-  width: 0; 
+  border-left: 32px solid transparent;
+  border-right: 32px solid transparent;
+  border-top: 50px solid #fcb177;
+  height: 0;
+  top: 285px;
+  width: 0;
   z-index: 1;
 }
 
 .wheel {
   border-radius: 50%;
-  height: 400px;
-  top: 350px;
-  width: 400px;
+  height: 280px;
+  top: 300px;
+  width: 280px;
   background: linear-gradient(36deg, lighten($accent-color, 15%) 42.34%, transparent 42.34%) 0 0,
     linear-gradient(72deg, lighten($accent-color, 20%) 75.48%, transparent 75.48%) 0 0,
     linear-gradient(-36deg, lighten($accent-color, 15%) 42.34%, transparent 42.34%) 100% 0,
@@ -276,11 +276,6 @@ main {
     linear-gradient(-36deg, transparent 57.66%, lighten($accent-color, 10%) 57.66%) 0 100%,
     linear-gradient(-72deg, transparent 24.52%, lighten($accent-color, 5%) 24.52%) 0 100%, 
     lighten($accent-color, 25%) linear-gradient($accent-color, $accent-color) 50% 100%;
-    // linear-gradient(36deg, $accent-color, transparent 42.34%) 0 0,
-    // linear-gradient(72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 0 0,
-    // linear-gradient(-36deg, $accent-color, 42.34%, transparent 42.34%) 100% 0,
-    // linear-gradient(-72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 100% 0,  
-    // lighten($accent-color, 20%) linear-gradient(red, purple) 50% 100%;
   background-repeat: no-repeat;
   background-size: 50% 50%;
 }
