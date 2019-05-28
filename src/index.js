@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import './css/base.scss';
 import './images/turing-logo.png';
-// import Winwheel from '../javascript-winwheel/Winwheel.js';
 import Game from './Game';
 import Wheel from './Wheel';
 import domUpdates from './domUpdates';
@@ -25,9 +24,7 @@ $(document).on('click', ".usable", function(e) {
   domUpdates.displayPlayerScores(game, game.currentRound.currentTurn.player.id);
   domUpdates.updateCurrentPlayer(game.currentRound.currentTurn.player);
   domUpdates.clearSpinVal();
-  $(e.target).addClass('used');
-  $('.letter').removeClass('usable');
-  $('.letter').removeClass('hidden');
+  domUpdates.useLetter(e.target);
 });
 
 $('.letter').click(function(e) {
@@ -49,12 +46,14 @@ $('.spin-btn').click(function() {
     game.currentRound.currentTurn.spinWheel();
     $('.vowel').addClass('hidden');
     $('.consonant').addClass('usable');
+    domUpdates.showHelp('Choose a letter from the box on the right!');
   }
 });
 
 $('.solve-btn').click(function(e) {
   e.preventDefault();
   domUpdates.toggleSolveForm();
+  domUpdates.showHelp('Type in what you think the answer is and then click "Solve!"');
 });  
 
 $('.actions-container').click(function(e) {
@@ -71,12 +70,19 @@ $('#cancel-btn').click(function() {
   })
 
 $('.buy-btn').click(function() {
-  if (game.currentRound.currentTurn.buyVowel()) {
+  if (game.currentRound.currentTurn.buyVowel() && (!game.currentRound.currentTurn.hasSpun)) {
     $('.consonant').addClass('hidden');
     $('.vowel').addClass('usable');
+    domUpdates.showHelp('Choose a vowel from the box on the right!');
+  } if (game.currentRound.currentTurn.hasSpun) {
+    domUpdates.showError('You can only choose a consonant after spinning. You may buy a vowel on your next turn if you have the funds.')
   }
 });
 
 $('#quit-btn').click(function() {
-    location.reload();
+  location.reload();
 });
+
+$('button, .letter').click(function() {
+  $('.help').text('');
+})
