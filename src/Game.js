@@ -51,7 +51,7 @@ class Game {
 
   startBonusRound() {
     this.findWinner();
-    domUpdates.updateRound(`${this.winner}'s Bonus Round!`);
+    domUpdates.updateRound(`${this.winner.name}'s Bonus Round!`);
     this.assignPuzzleBlock();
     this.roundCounter = 0;
     const bonusRound = new BonusRound(this, this.returnPuzzle(), this.winner);
