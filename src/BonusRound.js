@@ -1,4 +1,4 @@
-import Turn from './Turn';
+// import Turn from './Turn';
 import domUpdates from './domUpdates';
 import Round from './Round';
 
@@ -11,6 +11,7 @@ class BonusRound extends Round {
   endBonusRound() {
     domUpdates.clearCorrectLetters();
     domUpdates.clearIncorrectLetters();
+    //WinnerDeclaration();
   }
 }
 

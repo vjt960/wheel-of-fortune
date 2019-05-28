@@ -57,6 +57,8 @@ class Game {
     const bonusRound = new BonusRound(this, this.returnPuzzle(), this.winner);
     bonusRound.newTurn();
     this.assignCurrentRound(bonusRound);
+    domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
+    domUpdates.displayPuzzleBlanks(bonusRound.puzzle.correctAnswer);
     // this.reset();
     console.log(`initiating bonus round with: `, this.winner);
   }
