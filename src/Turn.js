@@ -38,7 +38,7 @@ class Turn {
       this.player.totalScore += this.player.roundScore;
       this.player.roundScore = 0;
       domUpdates.updateTotalScore(this.round.game, this.player.id);
-      this.round.endRound();
+      this.round.gameWinner ? this.round.endBonusRound() : this.round.endRound(this.player);
     } else {
       this.endTurn(this.returnNextPlayer())
 
@@ -56,14 +56,14 @@ class Turn {
 
   endTurn(player = this.player) {
     domUpdates.displayPlayerScores(this.round.game, this.player.id);
-    this.round.newTurn(player);
+    this.round.gameWinner ? this.round.newBonusTurn() : this.round.newTurn(player);
     domUpdates.updateCurrentPlayer(player);
   }
 
   letterGuessCheck(guess) {
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += (this.currentScore || 250);
-      this.endTurn();
+      domUpdates.evaluateLetterValues() ? this.round.endRound(this.player) : this.endTurn();
     } else {
       this.endTurn(this.returnNextPlayer());
     }

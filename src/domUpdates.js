@@ -56,6 +56,12 @@ export default {
     })
   },
 
+  evaluateLetterValues() {
+    const letterBoxes = $.makeArray($('.puzzle-char'));
+    const correctLetters = letterBoxes.filter(box => box.innerText !== '');
+    return letterBoxes.length === correctLetters.length;
+  },
+
   addIncorrectGuess(guess) {
     $('.incorrect-guesses').append(`<div class="letter">${guess}</div>`);
   },
@@ -150,5 +156,11 @@ export default {
     setTimeout(function() { 
       $('.help').text(message); 
     }, 8000);
+  },
+
+  displayGameWinner(winner) {
+    $('#winner-popup').toggle();
+    $('#winner-name').text(winner.name);
+    $('#winner-money').text(winner.totalScore);
   }
 }

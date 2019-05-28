@@ -79,7 +79,7 @@ $('.buy-btn').click(function() {
   }
 });
 
-$('#quit-btn').click(function() {
+$('.quit-btn').click(function() {
   location.reload();
 });
 
