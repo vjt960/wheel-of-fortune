@@ -334,3 +334,13 @@ article h2,
   right: 0;
   top: 1.6em;
 }
+
+#winner-popup {
+  background-color: $secondary-background;
+  height: 120vh;
+  width: 100%;
+  font-size: 67pt;
+  position: absolute;
+  margin: auto;
+  z-index: 100;
+}

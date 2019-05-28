@@ -40,10 +40,10 @@ class Game {
         .indexOf(puzz) === this.roundCounter);
   }
 
-  start() {
+  start(roundWinner) {
     this.assignPlayerIndeces();
     const round = new Round(this, this.returnPuzzle());
-    round.newTurn();
+    round.newTurn(roundWinner);
     this.assignCurrentRound(round);
     domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
     domUpdates.displayPuzzleBlanks(round.puzzle.correctAnswer);
@@ -52,24 +52,14 @@ class Game {
   startBonusRound() {
     this.findWinner();
     domUpdates.updateRound(`${this.winner.name}'s Bonus Round!`);
-    this.assignPuzzleBlock();
     this.roundCounter = 0;
     const bonusRound = new BonusRound(this, this.returnPuzzle(), this.winner);
-    bonusRound.newTurn();
+    bonusRound.newBonusTurn();
     this.assignCurrentRound(bonusRound);
     domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
     domUpdates.displayPuzzleBlanks(bonusRound.puzzle.correctAnswer);
-    // this.reset();
-    console.log(`initiating bonus round with: `, this.winner);
   }
 
-  reset() {
-    //keep players;
-    // new round;
-    // round.turn;
-    //domUpdates disp puzzle info;
-    //domUpdates disp puzzle blanks;
-  }
 
   createPlayers(names) {
     const players = names.map(name => {
@@ -90,11 +80,9 @@ class Game {
     this.winner = placement[0];
   }
 
-  endGame() {
-    // find winner
-    // start a bonus round with hardest puzzle and winner
+  winnerDeclaration(winner) {
+    domUpdates.displayGameWinner(winner);
   }
-
 }
 
 export default Game;
