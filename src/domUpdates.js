@@ -68,6 +68,10 @@ export default {
 
   displaySpinVal(game) {
     $('#spin-val').text(game.currentRound.currentTurn.spinValue);
+    $('#spin-val').addClass('spin-val-transition');
+    setTimeout(function () {
+      $('#spin-val').removeClass('spin-val-transition');
+    }, 1000);
   },
 
   clearSpinVal() {

@@ -277,6 +277,51 @@ article h2,
   margin: 33px;
 }
 
+@keyframes wheel {
+  0% {
+    font-size: 50px;
+    color: $accent-color;
+  }
+  15% {
+    font-size: 75px;
+    color: #0C1900;
+  }
+  25% {
+    font-size: 95px;
+    color: #193300;
+  }
+  35% {
+    font-size: 115px;
+    color: #264C00;
+  }
+  50% {
+    font-size: 130px;
+    color: #326600;
+  }
+  65% {
+    font-size: 115px;
+    color: #3F7F00;
+  }
+  75% {
+    font-size: 95px;
+    color: #4C9900;
+  }
+  85% {
+    font-size: 75px;
+    color: #58B200;
+  }
+  100% {
+    font-size: 50px;
+    color: $accent-color;
+  }
+}
+
+.spin-val-transition {
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-name: wheel;
+}
+
 .arrow, .wheel, .actions-container {
   left: 0;
   margin: auto;
