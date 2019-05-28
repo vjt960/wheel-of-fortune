@@ -2,6 +2,8 @@ import Player from './Player';
 import domUpdates from './domUpdates';
 import Round from './Round'
 import Puzzle from './Puzzle'
+import BonusRound from './BonusRound';
+
  
 class Game {
   constructor(wheel) {
@@ -49,9 +51,16 @@ class Game {
 
   startBonusRound() {
     this.findWinner();
+    domUpdates.updateRound(`${this.winner.name}'s Bonus Round!`);
+    this.assignPuzzleBlock();
+    this.roundCounter = 0;
+    const bonusRound = new BonusRound(this, this.returnPuzzle(), this.winner);
+    bonusRound.newTurn();
+    this.assignCurrentRound(bonusRound);
+    domUpdates.displayPuzzleInformation(this.currentRound.puzzle);
+    domUpdates.displayPuzzleBlanks(bonusRound.puzzle.correctAnswer);
+    // this.reset();
     console.log(`initiating bonus round with: `, this.winner);
-    this.reset();
-    //let winner start bonus round;
   }
 
   reset() {
@@ -76,8 +85,9 @@ class Game {
   }
   
   findWinner() {
-    let placement = this.players.sort((a, b) => b.totalScore - a.totalScore);
-    this.winner = placement.shift();
+    let placement = this.players.slice()
+      .sort((a, b) => b.totalScore - a.totalScore);
+    this.winner = placement[0];
   }
 
   endGame() {
