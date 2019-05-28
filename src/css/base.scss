@@ -152,11 +152,18 @@ article h2,
   animation-name: scale;
 }
 
+main {
+  height: 850px;
+  position: relative;
+}
+
 .actions-container {
   border-radius: 5px;
+  bottom: 0;
   margin: auto;
   min-height: 200px;
   padding: 10px;
+  position: absolute;
   width: 900px;
 }
 
@@ -209,7 +216,7 @@ article h2,
   flex-wrap: wrap;
   grid-row-start: 1;
   padding: 5px;
-  z-index: 1;
+  z-index: 3;
   width: 200px;
 }
 
@@ -250,23 +257,30 @@ article h2,
   border-right: 42px solid transparent;
   border-top: 60px solid $accent-color;
   height: 0; 
-  top: 455px;
+  top: 320px;
   width: 0; 
-  z-index: 2;
+  z-index: 1;
 }
 
 .wheel {
   border-radius: 50%;
-  // border: solid 1px #fcb177;
   height: 400px;
-  top: 483px;
-  width: 600px;
-  background: 
-    linear-gradient(36deg, $accent-color, transparent 42.34%) 0 0,
-    linear-gradient(72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 0 0,
-    linear-gradient(-36deg, $accent-color, 42.34%, transparent 42.34%) 100% 0,
-    linear-gradient(-72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 100% 0,  
-    lighten($accent-color, 20%) linear-gradient(red, purple) 50% 100%;
+  top: 350px;
+  width: 400px;
+  background: linear-gradient(36deg, lighten($accent-color, 15%) 42.34%, transparent 42.34%) 0 0,
+    linear-gradient(72deg, lighten($accent-color, 20%) 75.48%, transparent 75.48%) 0 0,
+    linear-gradient(-36deg, lighten($accent-color, 15%) 42.34%, transparent 42.34%) 100% 0,
+    linear-gradient(-72deg, lighten($accent-color, 20%) 75.48%, transparent 75.48%) 100% 0, 
+    linear-gradient(36deg, transparent 57.66%, lighten($accent-color, 10%) 57.66%) 100% 100%,
+    linear-gradient(72deg, transparent 24.52%, lighten($accent-color, 5%) 24.52%) 100% 100%,
+    linear-gradient(-36deg, transparent 57.66%, lighten($accent-color, 10%) 57.66%) 0 100%,
+    linear-gradient(-72deg, transparent 24.52%, lighten($accent-color, 5%) 24.52%) 0 100%, 
+    lighten($accent-color, 25%) linear-gradient($accent-color, $accent-color) 50% 100%;
+    // linear-gradient(36deg, $accent-color, transparent 42.34%) 0 0,
+    // linear-gradient(72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 0 0,
+    // linear-gradient(-36deg, $accent-color, 42.34%, transparent 42.34%) 100% 0,
+    // linear-gradient(-72deg, lighten($accent-color, 10%) 75.48%, transparent 75.48%) 100% 0,  
+    // lighten($accent-color, 20%) linear-gradient(red, purple) 50% 100%;
   background-repeat: no-repeat;
   background-size: 50% 50%;
 }
@@ -370,7 +384,9 @@ article h2,
   font-size: 4.5em;
   margin: 0;
   position: relative;
+  z-index: 2;
 }
+
 .ml4 .letters {
   left: 0;
   margin: auto;
