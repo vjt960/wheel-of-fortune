@@ -45,7 +45,8 @@ describe('Round', function() {
     game.currentRound.endRound();
     expect(game.roundCounter).to.equal(1);
     game.currentRound.endRound();
+    expect(game.roundCounter).to.equal(2);
     game.currentRound.endRound();
-    expect(game.roundCounter).to.equal(3);
+    expect(game.roundCounter).to.equal(0);
   });
 });

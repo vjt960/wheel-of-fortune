@@ -2,14 +2,11 @@ import chai from 'chai'
 const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
-import domUpdates from '../src/domUpdates.js';
 import Game from '../src/Game.js';
 import Round from '../src/Round.js';
-import Turn from '../src/Turn.js';
 import Player from '../src/Player.js';
 import Wheel from '../src/Wheel.js';
 import Data from '../src/Data.js'
-// chai.spy.on(domUpdates, 'createPlayers', () => true);
 
 describe('Turn', function () {
   let names;
@@ -41,9 +38,9 @@ describe('Turn', function () {
   });
 
   it('should be able to buy a vowel', function() {
-    turn.currentScore = 500;
-    turn.buyVowel('A', 100);
-    expect(turn.currentScore).to.equal(400);
+    turn.player.roundScore = 500;
+    turn.buyVowel();
+    expect(turn.player.roundScore).to.equal(400);
   });
 
   it('should be able to hold a value on good spins', function() {
