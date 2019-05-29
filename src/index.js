@@ -66,8 +66,8 @@ $('.actions-container').click(function(e) {
 });
 
 $('#cancel-btn').click(function() {
-    domUpdates.toggleSolveForm();
-  })
+  domUpdates.toggleSolveForm();
+})
 
 $('.buy-btn').click(function() {
   if (game.currentRound.currentTurn.buyVowel() && (!game.currentRound.currentTurn.hasSpun)) {

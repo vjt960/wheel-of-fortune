@@ -1,8 +1,4 @@
 import $ from 'jquery';
-// import Data from './Data';
-// import Game from './Game';
-// import Turn from './Turn';
-// import Player from './Player';
 
 export default {
   displayNames(players) {
@@ -22,7 +18,6 @@ export default {
   },
 
   displayPuzzleBlanks(puzzle) {
-    console.log(puzzle)
     puzzle.map((character, index) => {
       if (/^[A-Z]+$/.test(character)) {
         $('.puzzle-container').append(`<div class="puzzle-char char-${index}"></div>`)

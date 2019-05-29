@@ -2,14 +2,11 @@ import chai from 'chai'
 const expect = chai.expect;
 import spies from 'chai-spies';
 chai.use(spies);
-import domUpdates from '../src/domUpdates.js';
 import Game from '../src/Game.js';
 import Round from '../src/Round.js';
-import Turn from '../src/Turn.js';
 import Player from '../src/Player.js';
 import Wheel from '../src/Wheel.js';
 import Data from '../src/Data.js'
-// chai.spy.on(domUpdates, 'createPlayers', () => true);
 
 describe('Turn', function () {
   let names;
