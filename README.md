@@ -32,6 +32,8 @@ http://frontend.turing.io/projects/module-2/game-time.html
 
 ### Contributors
 Jacqeline Moore: https://github.com/jacquelinebelle
+
 Vinton Te'o: https://github.com/vjt960
+
 Steve Rumizen: https://github.com/rumizen
 
