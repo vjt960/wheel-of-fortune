@@ -159,7 +159,7 @@ export default {
   showHelp(message) {
     setTimeout(function() { 
       $('.help').text(message); 
-    }, 8000);
+    }, 60000);
   },
 
   displayGameWinner(winner) {
