@@ -78,6 +78,7 @@ class Game {
     let placement = this.players.slice()
       .sort((a, b) => b.totalScore - a.totalScore);
     this.winner = placement[0];
+    
   }
 
   winnerDeclaration(winner) {

@@ -41,9 +41,9 @@ describe('Turn', function () {
   });
 
   it('should be able to buy a vowel', function() {
-    turn.currentScore = 500;
-    turn.buyVowel('A', 100);
-    expect(turn.currentScore).to.equal(400);
+    turn.player.roundScore = 500;
+    turn.buyVowel();
+    expect(turn.player.roundScore).to.equal(400);
   });
 
   it('should be able to hold a value on good spins', function() {

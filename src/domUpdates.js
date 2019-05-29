@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import Data from './Data';
-import Game from './Game';
-import Turn from './Turn';
-import Player from './Player';
+// import Data from './Data';
+// import Game from './Game';
+// import Turn from './Turn';
+// import Player from './Player';
 
 export default {
   displayNames(players) {
