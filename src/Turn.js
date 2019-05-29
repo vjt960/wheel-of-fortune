@@ -63,7 +63,14 @@ class Turn {
   letterGuessCheck(guess) {
     if (this.round.puzzle.evaluateLetter(guess) === true) {
       this.player.roundScore += (this.currentScore || 250);
-      domUpdates.evaluateLetterValues() ? this.round.endRound(this.player) : this.endTurn();
+      if (domUpdates.evaluateLetterValues()) {
+        this.player.totalScore += this.player.roundScore;
+        this.player.roundScore = 0;
+        domUpdates.updateTotalScore(this.round.game, this.player.id);
+        this.round.endRound(this.player)
+      } else {
+        this.endTurn();
+      }
     } else {
       this.endTurn(this.returnNextPlayer());
     }
